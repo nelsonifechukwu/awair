@@ -1,0 +1,21 @@
+<thead>
+                  
+  <tr>
+    <th scope="col">Precipitation <i class="fas fa-cloud-rain"></i></th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+    {%if diff == 0%}
+      <th scope="col">Last updated: Never</th>
+      {%else%}
+      <th scope="col">Last updated: {{diff}}</th>
+      {%endif%}
+  </tr>
+</thead>
+<tbody>
+<tr>
+    <th scope="row">Rain</th>
+    <th scope="row"></th>
+    <th scope="row"></th>
+    <td>{{precipitation.rain}}</td>
+  </tr>
+  </tbody>

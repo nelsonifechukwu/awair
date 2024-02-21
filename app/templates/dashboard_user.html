@@ -1,0 +1,453 @@
+{%extends 'layout.html'%}
+{%block title%}
+Dashboard
+{%endblock%}
+{%block body%}
+
+<!-- <div class="logo-detailss">
+  <i class="bx bx-menu menu" id="btn2"></i>
+  <div class="title-name">
+  <i class="fab fa-adn"></i>
+  <div class="logo_name">Africo</div></div>
+    
+  </div> -->  
+   <!--Only menu should be sticky not Logo and name !!!!!!!!!!!!!!!!  -->
+
+<div class="logo-details">
+  <i class="bx bx-menu menu" id="btn"></i>
+  <i class="fab fa-adn" id="btn1"></i>
+  <div class="logo_name">Africo</div>
+</div>
+<div class="sidebar">
+  <ul class="nav-list" >
+    <li>
+      <i class="bx bx-search"></i>
+      <input type="text" placeholder="Search..." />
+      <span class="tooltip">Search</span>
+    </li>
+    <li>
+      <a href="#data">
+      <i class="bx bx-grid-alt"></i>
+      <span class="links_name">Data</span>
+      </a>
+      <span class="tooltip">Data</span>
+    </li>
+    <li>
+      <a href="#devices">
+      <i class="fas fa-square"></i>
+      <span class="links_name">Devices</span>
+      </a>
+      <span class="tooltip">Devices</span>
+    </li>
+    <li>
+      <a href="#analytics">
+      <i class="bx bx-pie-chart-alt-2"></i>
+      <span class="links_name">Analytics</span>
+      </a>
+      <span class="tooltip">Analytics</span>
+    </li>
+    <li>
+      <a href="#account" >
+      <i class="bx bx-user"></i>
+      <span class="links_name">Account</span>
+      </a>
+      <span class="tooltip">Account</span>
+    </li>
+    <li>
+      <a href="#setting">
+      <i class="bx bx-cog"></i>
+      <span class="links_name">Settings</span>
+      </a>
+      <span class="tooltip">Settings</span>
+    </li>
+    <li class="profile">
+      <div class="profile-details">
+        {%if user.profile_picture == None %}
+        <img src="/static/assets/emptyprofile.jpeg" alt="profileImg" />
+        {%else%}
+        <img src="{{url_for('static', filename = 'uploads/' + user.profile_picture)}}" alt="profileImg" />
+        {%endif%}
+        <div class="name_job">
+          <div class="name">{{user.name}}</div>
+          <div class="job">{{user.username}}</div>
+        </div>
+      </div>
+      <a title="logout" href="/logout">
+      <i class="bx bx-log-out" id="log_out"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+  <div class="mask"> </div>
+  <section class="home-section" id="data">
+   
+    <div class="text">Data</div>
+    <div class="menu-container d-flex justify-content-center">
+    
+      <div class="top-menu"> <!-- style = "position: relative; align-items: center; display: block;"-->
+        <ul class="nav nav-pills nav-justified mb-1" id="ex1" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a data-mdb-pill-init class="nav-link py-1 active"  id="tab-map" data-mdb-toggle="pill-map" href="#mapview" role="tab"
+                aria-controls="pills-map" aria-selected="true"><i class="fas fa-map"></i>Map</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a data-mdb-pill-init class="nav-link py-1" id="tab-list" data-mdb-toggle="pill-list" href="#list" role="tab"
+                aria-controls="pills-list" aria-selected="false"><i class="fas fa-list-ul"></i>List</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a data-mdb-pill-init class="nav-link py-1" id="tab-detail" data-mdb-toggle="pill-detail" href="#detail" role="tab"
+                  aria-controls="pills-detail" aria-selected="false"><i class="fas fa-eye"></i>Detail</a>
+              </li>
+          </ul>
+         </div>
+
+    </div>
+
+        <!-- Map -->
+        <div class="tab-content " >
+            <div class="tab-pane fade show active" id="mapview" role="tabpanel" aria-labelledby="tab-map">
+                <div id="map" style="height: 800px;">
+              </div>
+            </div>
+          </div>
+
+            <!-- List -->
+            <div class="tab-content ">
+              <div class="tab-pane fade show" id="list" role="tabpanel" aria-labelledby="tab-list">
+                <table class="table table-striped table-secondary">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID: {{dev}}</th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                      <th scope="col"  hx-get="/dashboard/{{user.id}}/{{dev}}/listdata" hx-trigger="every 10s">
+                       {%include 'listbattery.html'%}
+                        <!-- <i class="fas fa-battery-half"></i> <i class="fas fa-signal"></i>  -->
+                      </th>
+                    </tr>
+                  </thead>
+                </table>
+                <!-- Air Quality -->
+                <table class="table table-striped table-info" hx-get="/dashboard/{{user.id}}/{{dev}}/airquality" hx-trigger="every 10s">
+                    {%include 'airquality.html'%}
+                </table>
+
+                <!-- TP&H -->
+                <table class="table table-striped table-info" hx-get="/dashboard/{{user.id}}/{{dev}}/tph" hx-trigger="every 10s">
+                    {%include 'tph.html'%}
+                </table>
+              
+                <!-- Rain -->
+              <table class="table table-striped table-info"  hx-get="/dashboard/{{user.id}}/{{dev}}/precipitation" hx-trigger="every 10s">
+                  {% include 'precipitation.html'%}  
+              </table>
+
+              <!-- Wind -->
+              <table class="table table-striped table-info" hx-get="/dashboard/{{user.id}}/{{dev}}/wind" hx-trigger="every 10s">
+                  {% include 'wind.html'%}  
+              </table>
+              </div>
+            </div>
+
+            <!--Details -->
+            <div class="tab-content ">
+              <div class="tab-pane fade show" id="detail" role="tabpanel" aria-labelledby="tab-detail">
+                <center>
+                  <div class="card mb-3 h-auto w-75 pe-3" >
+                 <div class="wrapper-space mb-3">
+              
+                    <select title="drop-time" class = "drop-time" id="timeRange" onchange="updateAirByTimeRange(this.value)">
+                      <option value="1">Today</option>
+                      <option value="7">Last Week</option>
+                      <option value="4">Last Month</option>
+                      <option value="52">Last Year</option>
+                      <!-- More options can be added after discussion-->
+                    </select>
+                    
+                    <canvas id = "air" ></canvas>
+                  </div>
+                  </div>
+                </center>
+                <center>
+                <div class="card mb-3 h-auto w-75 pe-3" >
+               <div class="wrapper-space mb-3">
+            
+                  <select title="drop-time" class = "drop-time" id="timeRange" onchange="updateTPHByTimeRange(this.value)">
+                    <option value="1">Today</option>
+                    <option value="7">Last Week</option>
+                    <option value="4">Last Month</option>
+                    <option value="52">Last Year</option>
+                    <!-- More options can be added after discussion-->
+                  </select>
+                  
+                  <canvas id = "tph" ></canvas>
+                </div>
+                </div>
+              </center>
+
+                <center>
+                  <div class="card h-auto w-75 pe-3 mb-3" >
+                 <div class="wrapper-space mb-3">
+              
+                  <select title="drop-time"  class = "drop-time" id="timeRangeWind" onchange="updateWindByTimeRange(this.value)">
+                    <option value="1">Today</option>
+                    <option value="7">Last Week</option>
+                    <option value="4">Last Month</option>
+                    <option value="52">Last Year</option>
+                    <!-- More options can be added after discussion-->
+                    </select>
+                  <canvas id="wind" ></canvas>
+                  </div>
+                  </div>
+                </center>
+                
+              </div>
+                </div> 
+              </section>
+
+              
+  <section class="home-section" id="devices">
+  <div class="text">Devices</div>
+  <a class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init href="#add-device" role="button" style = "margin-left: calc(50% - 78px);">Add a Device</a>
+  {%for id in device%}
+  <div class = "keep-margin" >
+    <div class = "device-card-test">
+      <div class="device-span" onclick="window.location='/dashboard/{{user.id}}/{{id.device_id}}'">
+      <div class = "content">
+        <strong>{{loop.index}} </strong>
+      </div>
+      <div class = "content">
+        <p class="card-text content"><i class="fas fa-square"></i> ID: {{id.device_id}} </p>
+      </div>
+      <div class = "content">
+        <p class="card-text content"><i class="fas fa-location-dot"></i>: {{id.place}} </p>
+      </div>
+ <div  hx-get="/dashboard/{{user.id}}/{{id.device_id}}/status" hx-trigger="every 3s">
+        {%include 'status.html'%}  
+    </div>
+    </div>
+      <div class="remove-button ">
+        <a title="remove-link" href="/dashboard/{{user.id}}/{{id.device_id}}/remove" 
+          onclick="return confirm('Are you sure? Removing this device would dissociate your account from this device permanently')" data-mdb-ripple-init>
+        </p><i class="gg-close-o " ></i></p></a>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted">
+    Last active: {{funcs.convert_timedelta(id.last_updated)}}
+  </div>
+  {%endfor%}
+ 
+</section>
+<section class="home-section" id="analytics">
+  <div class="text">Analytics</div>
+</section>
+<section class="home-section" id="account">
+  <div class="text">Account</div>
+  <!-- <form action="/dashboard/{{user.id}}/profile/upload" method="post"> -->
+  <div class="d-flex justify-content-center mb-4 ">
+    <div class = "main-pic">
+      {%if user.profile_picture == None %}
+      <img id="selectedAvatar" src="/static/assets/emptyprofile.jpeg" class="rounded-circle" style="width: 200px; height: 200px; object-fit: cover;" alt="profileImg" />
+      {%else%}  
+      <img id="selectedAvatar" src="{{url_for('static', filename = 'uploads/' + user.profile_picture)}}"
+        class="rounded-circle" style="width: 200px; height: 200px; object-fit: cover;" alt="profileImg" />
+      {%endif%}
+      <button class = "main-pic-attrib">
+        <i class="fas fa-pen"></i>
+        <div class = "tooltip">
+          <div  class="">
+            <label for="profile" style = "color: black;">Upload a Photo... </label>
+          <input class="form-control d-none" type="file" name="profile" id="profile" onchange="showImg()">
+          </div>
+          {%if user.profile_picture%}
+          <br><a href="/dashboard/{{user.id}}/profile/remove" style= "color: black;">Remove Photo</a>
+          {%else%}
+          {%endif%}
+        </div>
+      </button>
+    </div>
+  </div>
+
+<div class="d-flex justify-content-center mb-4 mt-3">
+  <div class="card h-50 account-card">
+    <div class="rounded-top text-dark h-auto" style="background-color: #d6d6d6;">
+     <table class="table">
+      <tr>
+        <th scope="col">No of Devices: </th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">{{no_of_device}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Name: </th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">{{user.name}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Username: </th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">{{user.username}}</th>
+      </tr>
+      <tr>
+        <th scope="col">Email: </th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">{{user.email}}</th>
+      </tr>
+     </table>
+      
+      <div class="ms-4 mt-0 d-flex flex-column account-edit">
+        <a class="btn btn-outline-dark"  data-mdb-modal-init href="#edit-profile"  data-mdb-ripple-color="dark"
+          style="z-index: 1;" role="button">
+          Edit profile <i class="fas fa-pen"></i>
+      </a>
+      </div>
+
+        
+        <div class="w-100 mt-2 ">
+          <table class="table">
+            <tr>
+              <th scope="col">Change Password: </th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"><a title="change-password-user" class="btn btn-outline-primary" data-mdb-modal-init href="#change-password" data-mdb-ripple-color="dark"
+                style="z-index: 1;"><i class="fas fa-pen"></i></a></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="home-section" id="setting">
+  <div class="text">Settings</div>
+</section>
+<!-- Devices Modal-->
+<div class="modal fade" id="add-device" aria-hidden="true" aria-labelledby="device" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add">Add Device</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/dashboard/{{user.id}}/{{dev}}" method="post">
+        <div class="modal-body">
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="text" name="device_id" id="form3Example1cg" class="form-control form-control-lg" required/>
+            <label class="form-label" for="form3Example1cg">Device ID</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >
+          Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="edit-profile" aria-hidden="true" aria-labelledby="device" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit">Edit Profile</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/dashboard/{{user.id}}/profile/edit" method="post">
+
+        <div class="modal-body">
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="text" name="name" id="edit-name" class="form-control form-control-lg" value="{{user.name}}" required/>
+            <label class="form-label" for="edit-name">Name</label>
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4">
+            <input type="text" name="username" id="edit-user" class="form-control form-control-lg" value="{{user.username}}" required/>
+            <label class="form-label" for="edit-user">Username</label>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" >
+          Edit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Change password -->
+<div class="modal fade" id="change-password" aria-hidden="true" aria-labelledby="device" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="change">Change Password</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/dashboard/{{user.id}}/profile/password/change" method="post">
+      <div class="modal-body">
+        <div data-mdb-input-init class="form-outline mb-4">
+          <input type="password" name="current" id="currentpassword" class="form-control form-control-lg" required/>
+          <label class="form-label" for="currentpassword">Current Password</label>
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4">
+          <input type="password" name="new" id="newpassword" class="form-control form-control-lg" required/>
+          <label class="form-label" for="newpassword">New Password</label>
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4">
+          <input type="password" name="retype" id="retypepassword" class="form-control form-control-lg" required/>
+          <label class="form-label" for="retypepassword">Retype Password</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" >
+          Change
+        </button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+{% set long = long  %}
+<script id="long" type="application/json">{{ long|tojson }}</script>
+{% set lat = lat  %}
+<script id="lat" type="application/json">{{ lat|tojson }}</script>
+{% set id = user.id  %}
+<script id="id" type="application/json">{{ id|tojson }}</script>
+{% set dev = dev %}
+<script id="dev" type="application/json">{{ dev|tojson }}</script>
+
+
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="/static/js/Control.FullScreen.js"></script>
+<!-- Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+<!-- Local -->
+<script
+type="text/javascript"
+src="/static/js/map.js"
+></script>
+<script
+type="text/javascript"
+src="/static/js/air.js"
+></script>
+<script
+type="text/javascript"
+src="/static/js/tph.js"
+></script>
+<script
+type="text/javascript"
+src="/static/js/wind.js"
+></script>
+
+{%endblock%}

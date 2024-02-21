@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content = "" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {%block title%}{%endblock%}</title>
+
+<!-- Local CSS -->
+<link 
+rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" 
+/>
+<!--gg icons-->
+<link href='https://unpkg.com/css.gg@2.0.0/icons/css/close-o.css' rel='stylesheet'/>
+<!-- Font Awesome -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
+rel="stylesheet"
+/>
+<!-- Bootstrap Icon -->
+<link rel="stylesheet"
+href=
+"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+<!-- Box Icon -->
+<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<link rel="stylesheet" href="/static/css/Control.FullScreen.css" />
+  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+</head>
+<body class = "body">
+    {% with messages = get_flashed_messages(with_categories=true) -%}
+    {% if messages %}
+    {%for category, message in messages %}
+    <div style = "
+    position: absolute;
+    right: 0px;
+    padding-right: 0px; padding-left: 0px; 
+    display: flex;
+    z-index: 100;
+    padding-right: 0px;
+    margin-right: 0px;"
+    class="alert alert-{{ category }} alert-dismissible fade show" 
+    role="alert" id="info">
+        <div style= "flex: 1; padding-right: 10px;">{{ message }} </div>
+        <div class = "remove-button-g" style="cursor: pointer; " data-mdb-dismiss="alert" aria-label="Close" onclick="closebutton()">
+        <i class="gg-close-o" ></i>
+    </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {%block body%}
+   
+    {%endblock%}
+  
+    <!-- MDB -->
+<script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+></script>
+
+<!-- HTMX -->
+<script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
+<!-- Local Javascript -->
+<script
+type="text/javascript"
+src="/static/js/main.js"
+></script>
+<script
+type="text/javascript"
+src="/static/js/dash.js"
+></script>
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<thead>
+                  
+    <tr>
+      <th scope="col">Wind <i class="fas fa-wind"></i></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      {%if diff == 0%}
+      <th scope="col">Last updated: Never</th>
+      {%else%}
+      <th scope="col">Last updated: {{diff}}</th>
+      {%endif%}
+    </tr>
+  </thead>
+  <tbody >
+<tr>
+    <th scope="row">Wind Speed</th>
+    <th scope="row"></th>
+    <th scope="row"></th>
+    <td>{{wind.wind_speed}} ms<sup>-1</sup></td>
+  </tr>
+  <tr>
+    <th scope="row">Wind Direction</th>
+    <th scope="row"></th>
+    <th scope="row"></th>
+    <td>{{wind.wind_direction}}&deg;</td>
+  </tr>
+  <tr>
+    <th scope="row">Cloud Cover</th>
+    <th scope="row"></th>
+    <th scope="row"></th>
+    <td>{{wind.cloud_cover}} %</td>
+  </tr>
+  </tbody>

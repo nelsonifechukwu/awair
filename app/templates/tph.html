@@ -1,0 +1,34 @@
+
+<thead>
+                    
+    <tr>
+      <th scope="col">TP&H <i class="fas fa-table"></i></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      {%if diff == 0%}
+      <th scope="col">Last updated: Never</th>
+      {%else%}
+      <th scope="col">Last updated: {{diff}}</th>
+      {%endif%}
+    </tr>
+  </thead>
+  <tbody >
+<tr>
+    <th scope="row">Temperature</th>
+    <th scope="row"></th>
+    <th scope="row"></th>
+    <td>{{tph_data.temperature}}&deg;C</td>
+  </tr>
+  <tr>
+    <th scope="row">Pressure</th>
+    <th scope="row"></th>
+    <th scope="row"></th>
+    <td>{{tph_data.pressure}} Kpa</td>
+  </tr>
+  <tr>
+    <th scope="row">Humidity</th>
+    <th scope="row"></th>
+    <th scope="row"></th>
+    <td>{{tph_data.humidity}} %</td>
+  </tr>
+</tbody>
