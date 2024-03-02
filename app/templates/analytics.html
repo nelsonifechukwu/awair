@@ -1,0 +1,68 @@
+<head>
+  <meta http-equiv="refresh" content="" />
+
+  <script src = "/static/js/analytics.js" defer></script>
+</head>
+<div class="ana-header">
+  <div><i class="fas fa-location-dot"></i>&nbsp; Location</div>
+  <p style="font-size: 55px; margin: 0px; font-weight: 200">{{tph_data.temperature}}&deg;</p>
+  <div>Rainy | Windy | Sunny</div>
+  <div>H: {{tph_data.humidity}}%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P: {{tph_data.pressure}}Kpa</div>
+</div>
+
+<div class="ana-container">
+  <div class="flexy1">
+    <div class="ana-scroll-card">
+      <i class="fa-solid fa-angle-left" id = "left"></i>
+      <div class="scroll-element" >
+        <p>Now</p>
+        <p><img src="/static/assets/good-feedback.png" alt="" width="30"></p>
+        <p>{{funcs.convert_float(tph_data.temperature)|round|int}}</p>
+      </div>
+      {%for all in hourly_all%}
+      <div class="scroll-element" >
+        <p>{{all.date_forecast.strftime('%H')}}:00</p>
+        <p><img src="/static/assets/good-feedback.png" alt="" width="30"></p>
+        <p>{{funcs.convert_float(all.temperature_2m)|round|int}}</p>
+      </div>
+{%endfor%}
+       <i class="fa-solid fa-angle-right" id = "right"></i>
+    </div>
+
+    <div class="ana-grid-1">
+      <div class="ana-forecast">Forecast
+      {%for daily in daily_all%}
+        <p>Min: {{funcs.convert_float(daily.temperature_2m_min)|round|int}}, Max:{{funcs.convert_float(daily.temperature_2m_max)|round|int}}</p><br>
+       {%endfor%}
+      </div>
+      <div class="ana-grid-1-mini">
+        <div>Air Quality
+          <center><div style="position: relative; top: 100%; "><img src="/static/assets/good-feedback.png" alt="" width="50" height="50" ></div>
+         <div><p>{{airq.pmtwo}}</p></div> 
+         <div><p>{{airq.pmten}}</p></div> 
+         <div><p>{{airq.co_index}}</p></div> 
+          </center>
+        </div>
+        <div>Rain</div>
+        <div>Wind Speed and Direction
+          <div><p>Wind Speed: {{wind.wind_speed}}</p></div>
+          <div><p>Wind Direction: {{wind.wind_direction}}</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flexy2">
+    <div class="ana-map">Map</div>
+    <div class="ana-grid-2">
+      <div>Humidity
+        <div><p>{{tph_data.humidity}}</p></div>
+      </div>
+      <div>Pressure
+        <div><p>{{tph_data.pressure}}</p></div>
+      </div>
+      <div>Feels Like</div>
+      <div>Averages</div>
+    </div>
+  </div>
+</div>
