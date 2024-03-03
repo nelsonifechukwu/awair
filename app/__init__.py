@@ -18,5 +18,6 @@ def create_app(config_class = Config):
     app.register_blueprint(api_bp)
     app.register_blueprint(auth)
     app.register_blueprint(dashboard_bp)
+    app.register_blueprint(analytics_bp)
     app.jinja_env.globals.update(funcs=funcs)
     return app

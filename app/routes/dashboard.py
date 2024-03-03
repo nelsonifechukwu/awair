@@ -16,14 +16,6 @@ from sqlalchemy import and_, or_, not_
 
 dashboard_bp = Blueprint('dashboard_bp', __name__, url_prefix='/dashboard')
 
-#ERROR HANDLING FOR POST ROUTES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-# Session API needs to be checked out "https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session.get" because Query.get() not in sqlalchemy 2.x
-
-# @dashboard_bp.before_request
-# def check_authentication():
-#     if not current_user.is_authenticated:
-#         flash("Your session has been timed out", "info")
-#         return render_template("signup.html")
 @dashboard_bp.route('/<id>', methods=["GET","POST"])
 @login_required
 def dashboard(id):
@@ -32,7 +24,6 @@ def dashboard(id):
         if current_user.id == id:
             user = db.session.get(User, id)
             uuid_ex = Uuid.query.filter_by(user_id = id).join(Darla, Darla.id == Uuid.uuid).add_columns(Darla.device_id).first()
-            # uuid_ex = db.session.query(Uuid, Darla.device_id).filter(Uuid.user_id == id).join(Darla, Darla.id == Uuid.uuid).first()
             if request.method == 'POST':
                 uuid_val = request.form["uuid"]
                 darla = Darla.query.filter_by(device_id = uuid_val).first() 
@@ -158,15 +149,6 @@ def change_password(id):
     else:
         abort(401)
         
-
-
-
-
-
-# Responsiveness is S*** !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# Total number of device to be added to the user table (To avoid the justin beiber problem)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-# Devices
 @dashboard_bp.route("/<id>/<device>", methods=["GET","POST"])
 @login_required
 def dashboard_user(id, device):
@@ -434,11 +416,6 @@ def get_wind(id, device):
     else:
         abort(403)
 
-# Link to session timing: https://flask.palletsprojects.com/en/3.0.x/config/#PERMANENT_SESSION_LIFETIME
-        
-# CHARTS
-# For TPH
-# Use Query strings instead of routes for weeks !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 @dashboard_bp.route("/<id>/<device>/charts/<week>/tph")
 @login_required
 def graph_tph(id, device, week):
