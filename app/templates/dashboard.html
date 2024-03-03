@@ -52,7 +52,7 @@ Dashboard
       </li>
     </ul>
   </div>
-  
+  <div class="mask"> </div>
   <section class="home-section" id="data">
     <div class="text">Devices</div>
             <div class="no-device">
@@ -146,18 +146,18 @@ Dashboard
   
 
 <!-- Devices Modal-->
-<div class="modal fade" id="add-device" aria-hidden="true" aria-labelledby="device" tabindex="-1">
+<div class="modal fade" id="add-device" aria-hidden="true" aria-labelledby="de" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="device">Add Device</h5>
+        <h5 class="modal-title" id="de">Add Device</h5>
         <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="/dashboard/{{user.id}}" method="post">
       <div class="modal-body">
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="text" name="uuid" id="form3Example1cg" class="form-control form-control-lg" required/>
-          <label class="form-label" for="form3Example1cg">Device ID</label>
+          <input type="text" name="uuid" id="devi" class="form-control form-control-lg" required/>
+          <label class="form-label" for="devi">Device ID</label>
         </div>
       </div>
       <div class="modal-footer">
@@ -170,22 +170,22 @@ Dashboard
   </div>
 </div>
 <!-- Edit Profile Modal -->
-<div class="modal fade" id="edit-profile" aria-hidden="true" aria-labelledby="device" tabindex="-1">
+<div class="modal fade" id="edit-profile" aria-hidden="true" aria-labelledby="ed" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="device">Edit Profile</h5>
+        <h5 class="modal-title" id="ed">Edit Profile</h5>
         <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="/dashboard/{{user.id}}/profile/edit" method="post">
       <div class="modal-body">
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="text" name="name" id="form3Example1cg" class="form-control form-control-lg" value="{{user.name}}" required/>
-          <label class="form-label" for="form3Example1cg">Name</label>
+          <input type="text" name="name" id="na" class="form-control form-control-lg" value="{{user.name}}" required/>
+          <label class="form-label" for="na">Name</label>
         </div>
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="text" name="username" id="form3Example1cg" class="form-control form-control-lg" value="{{user.username}}" required/>
-          <label class="form-label" for="form3Example1cg">Username</label>
+          <input type="text" name="username" id="use" class="form-control form-control-lg" value="{{user.username}}" required/>
+          <label class="form-label" for="use">Username</label>
         </div>
       </div>
       <div class="modal-footer">
@@ -198,26 +198,26 @@ Dashboard
   </div>
 </div>
 <!-- Change password -->
-<div class="modal fade" id="change-password" aria-hidden="true" aria-labelledby="device" tabindex="-1">
+<div class="modal fade" id="change-password" aria-hidden="true" aria-labelledby="ps" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="device">Change Password</h5>
+        <h5 class="modal-title" id="ps">Change Password</h5>
         <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="/dashboard/{{user.id}}/profile/password/change" method="post">
       <div class="modal-body">
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="password" name="current" id="form3Example1cg" class="form-control form-control-lg" required/>
-          <label class="form-label" for="form3Example1cg">Current Password</label>
+          <input type="password" name="current" id="cur" class="form-control form-control-lg" required/>
+          <label class="form-label" for="cur">Current Password</label>
         </div>
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="password" name="new" id="form3Example1cg" class="form-control form-control-lg" required/>
-          <label class="form-label" for="form3Example1cg">New Password</label>
+          <input type="password" name="new" id="ne" class="form-control form-control-lg" required/>
+          <label class="form-label" for="ne">New Password</label>
         </div>
         <div data-mdb-input-init class="form-outline mb-4">
-          <input type="password" name="retype" id="form3Example1cg" class="form-control form-control-lg" required/>
-          <label class="form-label" for="form3Example1cg">Retype Password</label>
+          <input type="password" name="retype" id="re" class="form-control form-control-lg" required/>
+          <label class="form-label" for="re">Retype Password</label>
         </div>
       </div>
       <div class="modal-footer">

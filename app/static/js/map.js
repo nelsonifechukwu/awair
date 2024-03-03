@@ -9,17 +9,28 @@ var id = JSON.parse(document.getElementById("id").textContent);
 var lat = parseFloat(lat);
 var long = parseFloat(long);
 
-var allVal = {
-  temperature: 0,
-  pressure: 0,
-  humidity: 0,
-  windSpeed: 0,
-  windDirection: 0,
-  pmtwo: 0,
-  pmten: 0,
-  co: 0,
-  place: "None",
-};
+// var allVal = {
+//   temperature: 0,
+//   pressure: 0,
+//   humidity: 0,
+//   windSpeed: 0,
+//   windDirection: 0,
+//   pmtwo: 0,
+//   pmten: 0,
+//   co: 0,
+//   place: "None",
+// };
+function updatePopup(id, values){
+  $("#" + id + "tempval").text(values.temperature);
+  $("#" + id + "humval").text(values.pressure);
+  $("#" + id + "presval").text(values.humidity);
+  $("#" + id + "pmtwoval").text(values.pmtwo);
+  $("#" + id + "pmtenval").text(values.pmten);
+  $("#" + id + "coval").text(values.co);
+  $("#" + id + "speed").text(values.wind_speed);
+  $("#" + id + "direction").text(values.wind_direction);
+  $("#" + id + "placeval").text(values.place);
+}
 var map = L.map("map", {
   fullscreenControl: true,
   fullscreenControlOptions: {
@@ -59,45 +70,46 @@ function getMarkers(positionData) {
         <div style="text-align: center">
           <i class="fas fa-location-dot"></i>&nbsp;<span
             style="font-size: 12px; font-weight: 500"
-            id="${ids}placeval">
-            ${allVal.place}</span>
+            id="${ids}placeval"></span>
         </div>
         <hr style="margin: 7px 0px" />
 
         <div class="pop-container">
           <div>Temperature</div>
-          <div><span id="${ids}tempval">${allVal.temperature}</span>&deg;C</div>
+          <div><span id="${ids}tempval"></span>&deg;C</div>
 
           <div>Humidity</div>
-          <div><span id="${ids}humval">${allVal.humidity}</span> %</div>
+          <div><span id="${ids}humval"></span> %</div>
 
           <div class = "pop-item">Pressure</div>
-          <div class = "pop-item"><span id="${ids}presval">${allVal.pressure}</span> Kpa</div>
+          <div class = "pop-item"><span id="${ids}presval"></span> Kpa</div>
 
           <div>PM2.5</div>
-          <div><span id="${ids}pmtwoval">${allVal.pmtwo}</span> µg/m<sup>3</sup></div>
+          <div><span id="${ids}pmtwoval"></span> µg/m<sup>3</sup></div>
 
           <div>PM10</div>
-          <div><span id="${ids}pmtenval">${allVal.pmten}</span> µg/m<sup>3</sup></div>
+          <div><span id="${ids}pmtenval"></span> µg/m<sup>3</sup></div>
 
           <div class = "pop-item">CO</div>
-          <div class = "pop-item"><span id="${ids}coval">${allVal.co}</span> ppm</div>
+          <div class = "pop-item"><span id="${ids}coval"></span> ppm</div>
 
           <div>Wind Direction</div>
-          <div><span id="${ids}direction">${allVal.windDirection}</span>&deg;</div>
+          <div><span id="${ids}direction"></span>&deg;</div>
 
           <div>Wind speed</div>
-          <div><span id="${ids}speed">${allVal.windSpeed}</span> ms<sup>-1</sup></div>
+          <div><span id="${ids}speed"></span> ms<sup>-1</sup></div>
 
           <div>Cloud</div>
-          <div><span id="${ids}cloud_cover">${allVal.cloud_cover}</span> %</div>
+          <div><span id="${ids}cloud_cover"></span> %</div>
         </div>
       </div>
 `;
         markers[ids] = L.marker([otherLat, otherLong], { icon: customIcon })
           .addTo(map)
           .bindPopup(L.popup({ maxWidth: 500 }).setContent(popupItem))
-          .addTo(map);
+          .addTo(map).on('click', function (){
+            getAlldata();
+          });
       }
     }
   }
@@ -111,24 +123,7 @@ function getAlldata() {
     success: function (data) {
       for (let id in data) {
         var values = data[id];
-        allVal.temperature = values.temperature;
-        allVal.pressure = values.pressure;
-        allVal.humidity = values.humidity;
-        allVal.pmtwo = values.pmtwo;
-        allVal.pmten = values.pmten;
-        allVal.co = values.co;
-        allVal.windSpeed = values.wind_speed;
-        allVal.windDirection = values.wind_direction;
-        allVal.place = values.place;
-        $("#" + id + "tempval").text(allVal.temperature);
-        $("#" + id + "humval").text(allVal.pressure);
-        $("#" + id + "presval").text(allVal.humidity);
-        $("#" + id + "pmtwoval").text(allVal.pmtwo);
-        $("#" + id + "pmtenval").text(allVal.pmten);
-        $("#" + id + "coval").text(allVal.co);
-        $("#" + id + "speed").text(allVal.windSpeed);
-        $("#" + id + "direction").text(allVal.windDirection);
-        $("#" + id + "placeval").text(allVal.place);
+        updatePopup(id, values);
       }
     },
     error: function (error) {
@@ -153,3 +148,4 @@ function getLocations() {
   });
 }
 getLocations();
+

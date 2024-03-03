@@ -1,22 +1,29 @@
-{%if 90 < funcs.convert_int(darla.battery)<= 100%}
+<div class = "bar-sig">
+{%if 90 < funcs.convert_float(darla.battery)<= 100%}
 <img src="/static/assets/full-battery.png" width="20" height="20" alt=""> &nbsp;
-{%elif 65< funcs.convert_int(darla.battery) <= 90 %}
+<span class="img-val"> {{darla.battery}}% </span>
+{%elif 65< funcs.convert_float(darla.battery) <= 90 %}
 <img src="/static/assets/battery.png" width="20" height="20" alt=""> &nbsp;
-{%elif 40< funcs.convert_int(darla.battery) <= 65%}
+<span class="img-val"> {{darla.battery}}% </span>
+{%elif 40< funcs.convert_float(darla.battery) <= 65%}
 <img src="/static/assets/half-battery.png" width="20" height="20" alt=""> &nbsp;
-{%elif 15< funcs.convert_int(darla.battery) <= 40 %}
+<span class="img-val"> {{darla.battery}}% </span>
+{%elif 15< funcs.convert_float(darla.battery) <= 40 %}
 <img src="/static/assets/low-battery.png" width="20" height="20" alt=""> &nbsp;
+<span class="img-val"> {{darla.battery}}% </span>
 {%else%}
 <img src="/static/assets/empty-battery.png" width="20" height="20" alt=""> &nbsp;
+<span class="img-val"> {{darla.battery}}% </span>
 {%endif%}
-{%if 80 < funcs.convert_int(darla.signal)<= 100%}
+{%if 80 < funcs.convert_float(darla.signal)<= 100%}
 <img src="/static/assets/signal4.png" width="20" height="20" alt=""> &nbsp;
-{%elif 60< funcs.convert_int(darla.signal) <= 80 %}
+{%elif 60< funcs.convert_float(darla.signal) <= 80 %}
 <img src="/static/assets/signal3.png" width="20" height="20" alt=""> &nbsp;
-{%elif 40< funcs.convert_int(darla.signal) <= 60%}
+{%elif 40< funcs.convert_float(darla.signal) <= 60%}
 <img src="/static/assets/signal2.png" width="20" height="20" alt=""> &nbsp;
-{%elif 20< funcs.convert_int(darla.signal) <= 40 %}
+{%elif 20< funcs.convert_float(darla.signal) <= 40 %}
 <img src="/static/assets/signal1.png" width="20" height="20" alt=""> &nbsp;
 {%else%}
 <img src="/static/assets/signal0.png" width="20" height="20" alt=""> &nbsp;
 {%endif%}
+</div>

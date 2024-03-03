@@ -1,33 +1,42 @@
-<div class="text-end content">
-        {%if 90 < funcs.convert_int(id.battery)<= 100%}
-        <img src="/static/assets/full-battery.png" width="20" height="20" alt=""> &nbsp;
-        {%elif 65< funcs.convert_int(id.battery) <= 90 %}
-        <img src="/static/assets/battery.png" width="20" height="20" alt=""> &nbsp;
-        {%elif 40< funcs.convert_int(id.battery) <= 65%}
-        <img src="/static/assets/half-battery.png" width="20" height="20" alt=""> &nbsp;
-        {%elif 15< funcs.convert_int(id.battery) <= 40 %}
-        <img src="/static/assets/low-battery.png" width="20" height="20" alt=""> &nbsp;
-        {%else%}
-        <img src="/static/assets/empty-battery.png" width="20" height="20" alt=""> &nbsp;
-        {%endif%}
-        {%if 80 < funcs.convert_int(id.signal)<= 100%}
-        <img src="/static/assets/signal4.png" width="20" height="20" alt=""> &nbsp;
-        {%elif 60< funcs.convert_int(id.signal) <= 80 %}
-        <img src="/static/assets/signal3.png" width="20" height="20" alt=""> &nbsp;
-        {%elif 40< funcs.convert_int(id.signal) <= 60%}
-        <img src="/static/assets/signal2.png" width="20" height="20" alt=""> &nbsp;
-        {%elif 20< funcs.convert_int(id.signal) <= 40 %}
-        <img src="/static/assets/signal1.png" width="20" height="20" alt=""> &nbsp;
-        {%else%}
-        <img src="/static/assets/signal0.png" width="20" height="20" alt=""> &nbsp;
-        {%endif%}
-        <!-- <i class="fas fa-battery-half"></i> &nbsp; -->
-        <!-- <i class="fas fa-signal"></i>  -->
-      </div>
-      <div class = "content" >
-{%if id.active%}
-        <div class="d-success"></div>
-        {%else%}
-        <div class="d-danger"></div>
-        {%endif%}
-   </div> 
+<div class="text-end content bar-sig">
+  {%if 90 < funcs.convert_float(id.battery)<= 100%}
+  <img src="/static/assets/full-battery.png" width="20" height="20" alt="" />
+  &nbsp;
+  <span class="img-val"> {{id.battery}}% </span>
+  {%elif 65< funcs.convert_float(id.battery) <= 90 %}
+  <img src="/static/assets/battery.png" width="20" height="20" alt="" /> &nbsp;
+  <span class="img-val"> {{id.battery}}% </span>
+  {%elif 40< funcs.convert_float(id.battery) <= 65%}
+  <img src="/static/assets/half-battery.png" width="20" height="20" alt="" />
+  &nbsp;
+  <span class="img-val"> {{id.battery}}% </span>
+  {%elif 15< funcs.convert_float(id.battery) <= 40 %}
+  <img src="/static/assets/low-battery.png" width="20" height="20" alt="" />
+  &nbsp;
+  <span class="img-val"> {{id.battery}}% </span>
+  {%else%}
+  <img src="/static/assets/empty-battery.png" width="20" height="20" alt="" />
+  &nbsp;
+  <span class="img-val"> {{id.battery}}% </span>
+  {%endif%} {%if 80 < funcs.convert_float(id.signal)<= 100%}
+  <img src="/static/assets/signal4.png" width="20" height="20" alt="" /> &nbsp;
+  {%elif 60< funcs.convert_float(id.signal) <= 80 %}
+  <img src="/static/assets/signal3.png" width="20" height="20" alt="" /> &nbsp;
+  {%elif 40< funcs.convert_float(id.signal) <= 60%}
+  <img src="/static/assets/signal2.png" width="20" height="20" alt="" /> &nbsp;
+  {%elif 20< funcs.convert_float(id.signal) <= 40 %}
+  <img src="/static/assets/signal1.png" width="20" height="20" alt="" /> &nbsp;
+  {%else%}
+  <img src="/static/assets/signal0.png" width="20" height="20" alt="" /> &nbsp;
+
+  {%endif%}
+  <!-- <i class="fas fa-battery-half"></i> &nbsp; -->
+  <!-- <i class="fas fa-signal"></i>  -->
+</div>
+<div class="content">
+  {%if id.active%}
+  <div class="d-success"></div>
+  {%else%}
+  <div class="d-danger"></div>
+  {%endif%}
+</div>

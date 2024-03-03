@@ -414,7 +414,6 @@ a:hover {
 .keep-margin {
   position: relative;
   margin: 50px;
-  position: relative;
 }
 
 .device-card-test {
@@ -427,8 +426,8 @@ a:hover {
   border-radius: 20px;
   background-color: transparent;
   margin: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  /* margin-top: 50px;
+  margin-bottom: 50px; */
   flex-wrap: wrap;
   padding: 10px;
   align-items: center;
@@ -473,11 +472,13 @@ a:hover {
   display: grid;
   grid-template-columns: 3fr 1fr;
   column-gap: 10px;
-  row-gap: 5px;;
+  row-gap: 5px;
 }
-.pop-item{
-border-bottom: 2px solid ;
-
+.pop-item {
+  border-bottom: 2px solid;
+}
+.pop-container div {
+  width: 90px;
 }
 @media (max-width: 630px) {
   .drop-time {
@@ -593,6 +594,154 @@ border-bottom: 2px solid ;
 
 .d-danger {
   animation: glow-danger 1500ms infinite;
+}
+
+/* Battery and Signal Hover */
+.bar-sig {
+  position: relative;
+}
+.img-val,
+.sig-val {
+  position: absolute;
+  top: -14px;
+  color: #386bc0;
+  opacity: 0;
+  border: 0px;
+  padding: 0px;
+  margin: 0px;
+  z-index: 9999;
+}
+.img-val {
+  left: 0px;
+}
+.sig-val {
+  right: 0px;
+}
+
+.bar-sig img:hover + .img-val,
+.bar-sig img:hover + .sig-val {
+  opacity: 1;
+}
+
+/*Analytics*/
+.ana-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.ana-container {
+  color: white;
+  background: linear-gradient(to bottom right, #546e7a, #78bddd);
+  border-radius: 10px;
+  display: flex;
+  gap: 30px;
+  flex-direction: row;
+  border: 2px solid black;
+  padding: 13px;
+  max-width: 1000px;
+  margin: auto auto;
+}
+
+.flexy1 {
+  flex: 2;
+  position: relative;
+}
+
+.flexy2 {
+  flex: 1.2;
+}
+/* control element arrangement
+scroll-card & scroll-element */
+.ana-scroll-card {
+  display: grid;
+  align-items: center;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 4) - 50px);
+  gap: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 2px solid black;
+  height: 200px;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.ana-scroll-card > i {
+  color: black;
+  height: 25px;
+  padding-top: 5px;
+  width: 25px;
+  cursor: pointer;
+  text-align: center;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 9;
+  top: 15%;
+  transform: translateY(-50%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+.ana-scroll-card i#left {
+  left: -12px;
+}
+.ana-scroll-card i#right {
+  right: -12px;
+}
+
+.scroll-element {
+  text-align: center;
+  position: relative;
+  border: 1px solid rgb(181, 87, 87);
+  /* max-width: fit-content; */
+  /* top: 50%;
+  transform: translateY(-60%); */
+  border-radius: 10px;
+  /* display: inline-block; */
+  scroll-snap-align: start;
+  cursor: pointer;
+  max-width: 100%;
+}
+.scroll-element p {
+  padding-bottom: 0px;
+}
+.ana-grid-1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  height: 500px;
+}
+
+.ana-map {
+  border-radius: 10px;
+  border: 2px solid black;
+  height: 400px;
+  margin-bottom: 30px;
+}
+
+.ana-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 300px;
+  grid-gap: 30px;
+}
+
+[class^="ana-grid-"] > * {
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.ana-grid-1-mini {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 30px;
+  border: none;
+}
+
+/*Analytics Lesser Width*/
+@media (max-width: 1000px) {
+  .ana-container {
+    flex-direction: column;
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -741,15 +890,3 @@ border-bottom: 2px solid ;
     max-width: 170px;
   }
 }
-
-/* Charts */
-/* .wrapper-chart {
-  height: 100px;
-  width: 85%;
-}
-@media (max-width: 600px) {
-  .flex-wrapper {
-     justify-content: space-between;
-  }
- 
-} */
