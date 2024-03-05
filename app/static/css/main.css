@@ -63,6 +63,7 @@
   /* overflow-y: hidden;  */
 }
 
+/* sidebar and homesection styling*/
 .sidebar {
   position: fixed;
   left: 0;
@@ -368,10 +369,49 @@
   opacity: 1;
   transition: opacity 1s ease-in-out;
 }
-/* .menu-container {
-  margin-bottom: 10px;
-} */
 
+.top-menu {
+  width: 300px;
+  position: relative;
+  z-index: 9999999999;
+  opacity: 0.5;
+}
+
+.top-menu li {
+  width: 80px;
+  text-align: center;
+  background-color: #f9f9ff;
+}
+
+.contmap {
+  /* margin-top: -11%; */
+  position: relative;
+  z-index: 1;
+}
+
+.contlist {
+  margin: 5%;
+  margin-top: 6%;
+}
+
+.top-menu:hover {
+  opacity: 1;
+}
+
+.no-device {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 350px;
+  transform: translate(-50%, -50%);
+}
+
+.contdetails {
+  margin-top: 100px;
+}
+/* End of sidebar and homesection styling*/
+
+/* Account Profile styling */
 .main-pic {
   position: relative;
   display: inline;
@@ -411,6 +451,15 @@ a:hover {
   opacity: 1;
 }
 
+.account-card {
+  width: auto;
+}
+.account-edit {
+  width: 150px;
+}
+/* End of Account Profile styling */
+
+/* Device Card styling */
 .keep-margin {
   position: relative;
   margin: 50px;
@@ -438,7 +487,9 @@ a:hover {
   /* border: 1px solid;  */
   display: inline-block;
 }
+/* End of Device Card styling */
 
+/*Graph styling under details*/
 .wrapper-space {
   height: 400px;
   width: 100%;
@@ -468,23 +519,9 @@ a:hover {
   right: 0%;
   margin-right: 10px;
 }
-.pop-container {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  column-gap: 10px;
-  row-gap: 5px;
-}
-.pop-item {
-  border-bottom: 2px solid;
-}
-.pop-container div {
-  width: 90px;
-}
-@media (max-width: 630px) {
-  .drop-time {
-    font-size: 10px;
-    top: -45px;
-  }
+.wrapper-space {
+  height: 400px;
+  width: 100%;
 }
 
 #jik {
@@ -499,13 +536,30 @@ a:hover {
   border: 1px solid #bbbbbb;
 }
 
-/* Just to make the devices section look better  */
-@media (max-width: 600px) {
-  .content {
-    font-size: 11px;
+@media (max-width: 630px) {
+  .drop-time {
+    font-size: 10px;
+    top: -45px;
   }
 }
+/*End of graph styling under details*/
 
+/* Map pop up styling under map.js*/
+.pop-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 10px;
+  row-gap: 5px;
+}
+.pop-item {
+  border-bottom: 2px solid;
+}
+.pop-container div {
+  width: 90px;
+}
+/* End of map pop up styling under map.js*/
+
+/*Device state styling */
 .device-span {
   display: flex;
   flex-direction: row;
@@ -595,8 +649,9 @@ a:hover {
 .d-danger {
   animation: glow-danger 1500ms infinite;
 }
+/*End of device state styling */
 
-/* Battery and Signal Hover */
+/* Battery and Signal Hover styling */
 .bar-sig {
   position: relative;
 }
@@ -622,6 +677,7 @@ a:hover {
 .bar-sig img:hover + .sig-val {
   opacity: 1;
 }
+/* End of Battery and Signal Hover styling */
 
 /*Analytics*/
 .ana-header {
@@ -630,13 +686,13 @@ a:hover {
 }
 .ana-container {
   color: white;
-  background: linear-gradient(to bottom right, #546e7a, #78bddd);
-  border-radius: 10px;
+  /* background: linear-gradient(to bottom right, #546e7a, #78bddd); */
+  background: transparent;
   display: flex;
   gap: 30px;
   flex-direction: row;
-  border: 2px solid black;
-  padding: 13px;
+  /* border: 2px solid black; */
+  /* padding: 13px; */
   max-width: 1000px;
   margin: auto auto;
 }
@@ -656,16 +712,24 @@ scroll-card & scroll-element */
   align-items: center;
   grid-auto-flow: column;
   grid-auto-columns: calc((100% / 4) - 50px);
-  gap: 10px;
   overflow: hidden;
   border-radius: 10px;
   border: 2px solid black;
   height: 200px;
   margin-bottom: 30px;
   max-width: 600px;
+  scroll-behavior: smooth;
+}
+.ana-scroll-card.dragging{
+  scroll-behavior: auto;
 }
 
-.ana-scroll-card > i {
+.ana-scroll-card.dragging .scroll-element{
+  cursor: grab;
+  user-select: none;
+}
+
+.flexy1 > i {
   color: black;
   height: 25px;
   padding-top: 5px;
@@ -676,21 +740,21 @@ scroll-card & scroll-element */
   border-radius: 50%;
   position: absolute;
   z-index: 9;
-  top: 15%;
+  top: 14%;
   transform: translateY(-50%);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
 }
-.ana-scroll-card i#left {
+.flexy1 i#left {
   left: -12px;
 }
-.ana-scroll-card i#right {
-  right: -12px;
+.flexy1 i#right {
+  right: -5px;
 }
 
 .scroll-element {
   text-align: center;
   position: relative;
-  border: 1px solid rgb(181, 87, 87);
+  /* border: 1px solid rgb(181, 87, 87); */
   /* max-width: fit-content; */
   /* top: 50%;
   transform: translateY(-60%); */
@@ -698,7 +762,6 @@ scroll-card & scroll-element */
   /* display: inline-block; */
   scroll-snap-align: start;
   cursor: pointer;
-  max-width: 100%;
 }
 .scroll-element p {
   padding-bottom: 0px;
@@ -707,21 +770,27 @@ scroll-card & scroll-element */
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-gap: 30px;
+}
+.ana-forecast{
   height: 500px;
 }
-
 .ana-map {
   border-radius: 10px;
   border: 2px solid black;
   height: 400px;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
 .ana-grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 300px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: 135px 135px;
   grid-gap: 30px;
+}
+
+[class^="ana-grid-"] > * {
+  overflow: hidden;
 }
 
 [class^="ana-grid-"] > * {
@@ -731,7 +800,9 @@ scroll-card & scroll-element */
 
 .ana-grid-1-mini {
   display: grid;
-  grid-template-columns: 1fr;
+  /* grid-auto-flow: row; */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 147px 147px 146px;
   grid-gap: 30px;
   border: none;
 }
@@ -744,7 +815,23 @@ scroll-card & scroll-element */
   }
 }
 
+.bg-color{
+  background: linear-gradient(to bottom right, #546e7a, #78bddd);
+  box-shadow: 0px 0px 10px grey;
+}
+/*End of Analytics styling*/
+
 @media (max-width: 600px) {
+  .flexy1 > i {
+  top: 11%;
+}
+  .ana-grid-1 {
+    grid-template-columns: 1fr;
+  }
+  .ana-grid-1-mini {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 147px;
+  }
   .sidebar li .tooltip {
     display: none;
   }
@@ -752,19 +839,6 @@ scroll-card & scroll-element */
   .sidebar {
     display: none;
   }
-
-  /* .sidebar .open {
-    
-    position: fixed;
-    left: 0;
-    top: 60.34px;
-    height: 100%;
-    width: 250px;
-    background: #f9f9ff;
-    padding: 6px 14px;
-    z-index: 99;
-    transition: all 0.5s ease;
-  } */
 
   .logo-details .logo_name {
     opacity: 0;
@@ -809,25 +883,7 @@ scroll-card & scroll-element */
   }
 }
 
-/* within dashboard */
-.top-menu {
-  width: 300px;
-  position: relative;
-  z-index: 9999999999;
-  opacity: 0.5;
-}
 
-.top-menu li {
-  width: 80px;
-  text-align: center;
-  background-color: #f9f9ff;
-}
-
-.contmap {
-  /* margin-top: -11%; */
-  position: relative;
-  z-index: 1;
-}
 
 @media (min-width: 1280px) {
   .contmap {
@@ -847,39 +903,6 @@ scroll-card & scroll-element */
   }
 }
 
-.contlist {
-  margin: 5%;
-  margin-top: 6%;
-}
-
-.top-menu:hover {
-  opacity: 1;
-}
-
-/* .top-menu-map{
-    width: 300px;
-    position: relative;
-    z-index: 9999999999;
-    opacity: 0.5;
-} */
-.no-device {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 350px;
-  transform: translate(-50%, -50%);
-}
-
-.contdetails {
-  margin-top: 100px;
-}
-/* account card */
-.account-card {
-  width: auto;
-}
-.account-edit {
-  width: 150px;
-}
 @media (max-width: 600px) {
   .account-card {
     max-width: 400px;
@@ -888,5 +911,11 @@ scroll-card & scroll-element */
   }
   .table th {
     max-width: 170px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    font-size: 11px;
   }
 }
