@@ -7,9 +7,9 @@ Recognizing this gap, Awair emerges as a groundbreaking solution, offering an ad
 Awair's data awareness, research, and analytics capabilities present a transformative approach to addressing the pressing issues related to the environment in the African context.
 
 # Hardware Design
- <h3>Electrical CAD</h3>
+ <h3>Electrical CAD</h3> 
  
- Requirements:
+ <ins>Requirements: </ins>
  - Basic Electronics
  - Hardware Materials:
    - ESP32
@@ -23,18 +23,18 @@ Awair's data awareness, research, and analytics capabilities present a transform
    - Wires
    - 2x 12-5v Buck Converters
      
-How To:
+<ins>How To: </ins>
 - Download the CAD files from ```.Awair/CAD/Electrical Design```
 - Use a printing service like JLC PCB to print the PCB. Or, use a CNC to cut the designed sketch
 - Mount the parts as shown in the PCB Diagram.
 
 <h3>Mechanical CAD</h3>
 
-Requirements:
+<ins>Requirements: </ins>
 - Basic CAD skills
 - Basic 3d Printing
   
-How To:
+<ins>How To: </ins>
 - Download the CAD files from ```.Awair/CAD/Mechanical Design```
 - Use a 3d printer to print the files (battery pack, cover, enclosure).
 
