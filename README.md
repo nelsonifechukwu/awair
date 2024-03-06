@@ -6,7 +6,7 @@ Recognizing this gap, Awair emerges as a groundbreaking solution, offering an ad
 
 Awair's data awareness, research, and analytics capabilities present a transformative approach to addressing the pressing issues related to the environment in the African context.
 
-# Hardware Deisgn
+# Hardware Design
  <h3>Electrical CAD</h3>
  
  Requirements:
@@ -24,7 +24,7 @@ Requirements:
 - Basic CAD skills
 - Basic 3d Printing
 How To:
-- Download the files from Awair/
+- Download the files from ```awair```
 
 
 
