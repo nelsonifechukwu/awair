@@ -13,18 +13,30 @@ Awair's data awareness, research, and analytics capabilities present a transform
  - Basic Electronics
  - Hardware Materials:
    - ESP32
+   - Female Header Pins
+   - DHT 22 Temperature Sensor
+   - BMP180 Pressure Sensor
+   - Sim 800l EVB GPS/GSM/GPRS sensor
+   - CO2 sensor
+   - Pm 2.5 & Pm 10 Air Quality Sensors
    - Batteries (4x 3.7v Lipo Batteries)
    - Wires
    - 2x 12-5v Buck Converters
+     
 How To:
+- Download the CAD files from ```.Awair/CAD/Electrical Design```
+- Use a printing service like JLC PCB to print the PCB. Or, use a CNC to cut the designed sketch
+- Mount the parts as shown in the PCB Diagram.
 
 <h3>Mechanical CAD</h3>
 
 Requirements:
 - Basic CAD skills
 - Basic 3d Printing
+  
 How To:
-- Download the files from ```awair```
+- Download the CAD files from ```.Awair/CAD/Mechanical Design```
+- Use a 3d printer to print the files (battery pack, cover, enclosure).
 
 
 
