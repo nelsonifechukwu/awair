@@ -42,4 +42,7 @@ Awair's data awareness, research, and analytics capabilities present a transform
 <h3>Embedded Software</h3>
 
 <ins>How To:</ins>
-- Open the file using platformIDE.
+- After setting up the hardware, open the file ```Awair/Embedded Code``` using platformIDE
+- Edit your variable ```uuid``` with the uuid obtained after registration
+- Edit the variable ```API-key``` with the API-Key obtained from the web application after registration
+- Upload the code to the ESP32
