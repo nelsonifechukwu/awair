@@ -13,6 +13,7 @@ Awair's data awareness, research, and analytics capabilities present a transform
  - Basic Electronics
  - Hardware Materials:
    - ESP32
+   - SD Card Module & SD Card
    - Female Header Pins
    - DHT 22 Temperature Sensor
    - BMP180 Pressure Sensor
@@ -38,6 +39,7 @@ Awair's data awareness, research, and analytics capabilities present a transform
 - Download the CAD files from ```.Awair/CAD/Mechanical Design```
 - Use a 3d printer to print the files (battery pack, cover, enclosure).
 
+<h3>Embedded Software</h3>
 
-
-
+<ins>How To:</ins>
+- Open the file using platformIDE.
