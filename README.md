@@ -8,6 +8,7 @@ Awair's data awareness, research, and analytics capabilities present a transform
 
 # CAD
  <h3>Electrical Design</h3>
+ 
  Requirements:
  - Basic Electronics
  - Hardware Materials:
@@ -17,8 +18,8 @@ Awair's data awareness, research, and analytics capabilities present a transform
    - 2x 12-5v Buck Converters
 How To:
 
-
 <h3>Mechanical Design</h3>
+
 Requirements:
 - Basic CAD skills
 - Basic 3d Printing
