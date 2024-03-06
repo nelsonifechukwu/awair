@@ -6,8 +6,8 @@ Recognizing this gap, Awair emerges as a groundbreaking solution, offering an ad
 
 Awair's data awareness, research, and analytics capabilities present a transformative approach to addressing the pressing issues related to the environment in the African context.
 
-# CAD
- <h3>Electrical Design</h3>
+# Hardware Deisgn
+ <h3>Electrical CAD</h3>
  
  Requirements:
  - Basic Electronics
@@ -18,7 +18,7 @@ Awair's data awareness, research, and analytics capabilities present a transform
    - 2x 12-5v Buck Converters
 How To:
 
-<h3>Mechanical Design</h3>
+<h3>Mechanical CAD</h3>
 
 Requirements:
 - Basic CAD skills
