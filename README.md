@@ -7,10 +7,51 @@ Recognizing this gap, Awair emerges as a groundbreaking solution, offering an ad
 Awair's data awareness, research, and analytics capabilities present a transformative approach to addressing the pressing issues related to the environment in the African context.
 
 # Web App
+
 How to run locally
 
 How to run online
 
+<h3> API Definitions </h3>
+
+/temp
+```
+body request: {
+    "uuid":"8254f02a-1c06-46f0-8382-66ad5be70cb6",
+    "temperature": "20",
+    "humidity":"50",
+    "pressure": "80"
+}
+```
+
+/airqo
+```
+body request: {
+    "uuid":"8254f02a-1c06-46f0-8382-66ad5be70cb6",
+    "pm2.5":"11.3",
+    "pm10":"25",
+    "co_index": 10
+}
+```
+
+/wind
+```
+body request: {
+    "uuid": "8254f02a-1c06-46f0-8382-66ad5be70cb6",
+    "wind-speed":"23",
+    "wind-direction":"40"
+}
+```
+
+/location
+```
+body request: {
+    "uuid":"8254f02a-1c06-46f0-8382-66ad5be70cb6",
+    "location": "0,40",
+    "battery":"50",
+    "signal": "80"
+}
+```
 
 # Hardware Design
   <h3>Electrical CAD</h3> 
