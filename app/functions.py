@@ -23,10 +23,19 @@ class Funcs:
             return "None"
     @staticmethod
     def convert_float(string):
-        return float(string)
+        try:
+            return float(string)
+        except TypeError as e:
+            print(e)
+            return 0
     @staticmethod
     def convert_int(val):
-        return int(val)
+        try:
+            return int(val)
+        except TypeError as e:
+            print(e)
+            return 0
+
     @staticmethod
     def files(filename):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in Config.EXTS
