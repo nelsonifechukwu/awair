@@ -16,16 +16,6 @@ from sqlalchemy import and_, or_, not_
 
 dashboard_bp = Blueprint('dashboard_bp', __name__, url_prefix='/dashboard')
 
-# ERROR HANDLING FOR POST ROUTES!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# Session API needs to be checked out "https://docs.sqlalchemy.org/en/20/orm/session_api.html#sqlalchemy.orm.Session.get" because Query.get() not in sqlalchemy 2.x
-
-# @dashboard_bp.before_request
-# def check_authentication():
-#     if not current_user.is_authenticated:
-#         flash("Your session has been timed out", "info")
-#         return render_template("signup.html")
-
-
 @dashboard_bp.route('/<id>', methods=["GET", "POST"])
 @login_required
 def dashboard(id):
