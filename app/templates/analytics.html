@@ -1,64 +1,98 @@
-<head>
-  <meta http-equiv="refresh" content="" />
+<body>
+  <div class="ana-header">
+    <div><i class="fas fa-location-dot"></i>&nbsp; {{darla.place}}</div>
 
-  <script src="/static/js/analytics.js" defer></script>
-</head>
-<div class="ana-header">
-  <div><i class="fas fa-location-dot"></i>&nbsp; Location</div>
-  <p style="font-size: 55px; margin: 0px; font-weight: 200">
-    {{tph_data.temperature}}&deg;
-  </p>
-  <div>Rainy | Windy | Sunny</div>
-  <div>
-    H: {{tph_data.humidity}}%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P:
-    {{tph_data.pressure}}Kpa
+    <p style="font-size: 55px; margin: 0px; font-weight: 200">
+      {{tph_data.temperature}}&deg;
+    </p>
+    <div>Rainy | Windy | Sunny</div>
+
+    <div>
+      H: {{tph_data.humidity}}%&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P:
+      {{tph_data.pressure}}Kpa
+    </div>
   </div>
-</div>
 
 <div class="ana-container">
   <div class="flexy1">
-    <i class="fa-solid fa-angle-left" id="left"></i>
-    <div class="ana-scroll-card bg-color">
-      <div class="scroll-element">
-        <p>Now</p>
-        <p>
-          <img
-            draggable="false"
-            src="/static/assets/good-feedback.png"
-            alt=""
-            width="30"
-          />
-        </p>
-        <p>{{funcs.convert_float(tph_data.temperature)|round|int}}&deg;</p>
-      </div>
-      {%for all in hourly_all%}
-      <div class="scroll-element">
-        <p>{{all.date_forecast.strftime('%H')}}:00</p>
-        <p>
-          <img
-            draggable="false"
-            src="/static/assets/good-feedback.png"
-            alt=""
-            width="30"
-          />
-        </p>
-        <p>{{funcs.convert_float(all.temperature_2m)|round|int}}&deg;</p>
-      </div>
-      {%endfor%}
-    </div>
-    <i class="fa-solid fa-angle-right" id="right"></i>
-    <div class="ana-grid-1">
-      <div class="ana-forecast bg-color">
-        Forecast {%for daily in daily_all%}
-        <p>
-          Min: {{funcs.convert_float(daily.temperature_2m_min)|round|int}},
-          Max:{{funcs.convert_float(daily.temperature_2m_max)|round|int}}
-        </p>
-        <br />
+    <i class="fa-solid fa-angle-left" id="button-left"></i>
+    <div class = "ana-scroll-modal"
+      tabindex="0"
+
+      data-mdb-popover-init
+      data-toggle="popover"
+      data-mdb-trigger="focus"
+      title="Dismissible popover"
+      data-mdb-html="true"
+      data-mdb-placement="auto"
+      data-mdb-content="And here's some amazing content. It's very engaging. Right?"
+    >
+      <div class="ana-scroll-card bg-color">
+        <div class="scroll-element">
+          <p>Now</p>
+          <p>
+            <img
+              draggable="false"
+              src="/static/assets/good-feedback.png"
+              alt=""
+              width="30"
+            />
+          </p>
+          {%if tph_data%}
+          <p>{{funcs.convert_float(tph_data.temperature)|round|int}}&deg;</p>
+          {%else%}
+          <p>None&deg;</p>
+          {%endif%}
+        </div>
+        {%for all in hourly_all%}
+        <div class="scroll-element">
+          <p>{{all.date_forecast.strftime('%H')}}:00</p>
+          <p>
+            <img
+              draggable="false"
+              src="/static/assets/good-feedback.png"
+              alt=""
+              width="30"
+            />
+          </p>
+          <p>{{funcs.convert_float(all.temperature_2m)|round|int}}&deg;</p>
+        </div>
         {%endfor%}
       </div>
+    </div>
+    <i class="fa-solid fa-angle-right" id="button-right"></i>
+    <div class="ana-grid-1">
+      <div
+        class="bg-color"
+        tabindex="0"
+        data-mdb-popover-init
+        data-toggle="popover"
+        data-mdb-trigger="focus"
+        title="Dismissible popover"
+        data-mdb-html="true"
+        data-mdb-placement="auto"
+        data-mdb-container = "body"
+        data-mdb-content="<div>{% include 'scroll_card.html' %}</div>"
+      >
+        <div class="ana-forecast">
+          Forecast {%for daily in daily_all%}
+          <p>
+            Min: {{funcs.convert_float(daily.temperature_2m_min)|round|int}},
+            Max:{{funcs.convert_float(daily.temperature_2m_max)|round|int}}
+          </p>
+          <br />
+          {%endfor%}
+        </div>
+      </div>
       <div class="ana-grid-1-mini">
-        <div class="bg-color">
+        <div class="bg-color" tabindex="0"
+
+        data-mdb-popover-init
+        data-toggle="popover"
+        data-mdb-trigger="focus"
+        title="Dismissible popover"
+        data-mdb-html="true"
+        data-mdb-content="And here's some amazing content. It's very engaging. Right?">
           Air Quality
           <center>
             <img
@@ -73,29 +107,90 @@
             <p>{{airq.co_index}}</p>
           </center>
         </div>
-        <div class="bg-color">Rain</div>
-        <div class="bg-color">
+        <div class="bg-color" tabindex="0"
+
+        data-mdb-popover-init
+        data-toggle="popover"
+        data-mdb-trigger="focus"
+        title="Dismissible popover"
+        data-mdb-html="true"
+        data-mdb-content="And here's some amazing content. It's very engaging. Right?">Rain</div>
+        <div class="bg-color" tabindex="0"
+
+        data-mdb-popover-init
+        data-toggle="popover"
+        data-mdb-trigger="focus"
+        title="Dismissible popover"
+        data-mdb-html="true"
+        data-mdb-placement="top"
+        data-mdb-content="And here's some amazing content. It's very engaging. Right?">
           Wind Speed and Direction
-          <div><p>Wind Speed: {{wind.wind_speed}}</p></div>
-          <div><p>Wind Direction: {{wind.wind_direction}}</p></div>
+          <div>
+            <p>Wind Speed: {{wind.wind_speed}}</p>
+          </div>
+          <div>
+            <p>Wind Direction: {{wind.wind_direction}}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="flexy2">
-    <div class="ana-map bg-color">Map</div>
+    <div
+      class="ana-map bg-color"
+      data-mdb-modal-init
+      data-mdb-target="#modal-map"
+    >
+      <div class="map-title">Map</div>
+      <div class="map-cont" id="analyt-map"></div>
+    </div>
     <div class="ana-grid-2">
-      <div class="bg-color">
+      <div class="bg-color" tabindex="0"
+
+      data-mdb-popover-init
+      data-toggle="popover"
+      data-mdb-trigger="focus"
+      title="Dismissible popover"
+      data-mdb-html="true"
+      data-mdb-content="And here's some amazing content. It's very engaging. Right?">
         Humidity
-        <div><p>{{tph_data.humidity}}</p></div>
+        <div>
+          <p>{{tph_data.humidity}}</p>
+        </div>
       </div>
-      <div class="bg-color">
+      <div class="bg-color" tabindex="0"
+
+      data-mdb-popover-init
+      data-toggle="popover"
+      data-mdb-trigger="focus"
+      title="Dismissible popover"
+      data-mdb-html="true"
+      data-mdb-placement="top"
+      data-mdb-content="And here's some amazing content. It's very engaging. Right?">
         Pressure
-        <div><p>{{tph_data.pressure}}</p></div>
+        <div>
+          <p>{{tph_data.pressure}}</p>
+        </div>
       </div>
-      <div class="bg-color">Feels Like</div>
-      <div class="bg-color">Averages</div>
+      <div class="bg-color" tabindex="0"
+
+      data-mdb-popover-init
+      data-toggle="popover"
+      data-mdb-trigger="focus"
+      title="Dismissible popover"
+      data-mdb-html="true"
+      data-mdb-placement="top"
+      data-mdb-content="And here's some amazing content. It's very engaging. Right?">Feels Like</div>
+      <div class="bg-color" tabindex="0"
+
+      data-mdb-popover-init
+      data-toggle="popover"
+      data-mdb-trigger="focus"
+      title="Dismissible popover"
+      data-mdb-placement="top"
+      data-mdb-html="true"
+      data-mdb-content="And here's some amazing content. It's very engaging. Right?">Averages</div>
     </div>
   </div>
 </div>
