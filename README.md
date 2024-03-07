@@ -1,20 +1,32 @@
-# Awair
+# AWAIR
 
+# Description
 In Africa, the absence of an extensive meteorological device network has posed a significant challenge for environmental research, hindering accurate ground-truth data acquisition. This limitation affects various sectors, including government initiatives, urban planning, pollution control, etc.
 
 Recognizing this gap, Awair emerges as a groundbreaking solution, offering an advanced, cloud-connected, real-time platform for environmental data. Awair aims to empower top universities, research labs, government agencies, and African industrial applications by providing accurate meteorological insights, facilitating informed decision-making, and sustainable solutions for environmental challenges.
 
 Awair's data awareness, research, and analytics capabilities present a transformative approach to addressing the pressing issues related to the environment in the African context.
 
-# Web App
+# Table of Content
+- [Description](#Description)
+- - [Endpoints](#endpoints)
+  - [Locate the IOT](#user-signup)
+  - [User Login](#user-login)
+  - [Create a Blog Post](#create-a-blog-post)
+  - [Like a Blog Post](#like-a-blog-post)
+  - [Follow a user](#follow-a-user)
+ 
+# Application 
+This is the guide to run this web application locally on the your device, it requires the installation of python, flask and other tools as seen in the requirement.txt in this repository.
 
-How to run locally
+## Endpoints
 
-How to run online
+### Locate the IOT
 
-<h3> API Definitions </h3>
-
-/temp
+- **URL:** `/temp`
+- **Method:** `POST`
+- **Description:** Allows users to insert data.
+- **Request Body:**
 ```
 body request: {
     "uuid":"8254f02a-1c06-46f0-8382-66ad5be70cb6",
@@ -24,7 +36,18 @@ body request: {
 }
 ```
 
-/airqo
+- **Response:**
+
+```json
+created
+```
+
+### Locate the IOT
+
+- **URL:** `/airqo`
+- **Method:** `POST`
+- **Description:** Allows users to insert data.
+- **Request Body:**
 ```
 body request: {
     "uuid":"8254f02a-1c06-46f0-8382-66ad5be70cb6",
@@ -34,7 +57,16 @@ body request: {
 }
 ```
 
-/wind
+- **Response:**
+
+```json
+created
+```
+
+- **URL:** `/wind`
+- **Method:** `POST`
+- **Description:** Allows users to insert data.
+- **Request Body:**
 ```
 body request: {
     "uuid": "8254f02a-1c06-46f0-8382-66ad5be70cb6",
@@ -43,7 +75,16 @@ body request: {
 }
 ```
 
-/location
+- **Response:**
+
+```json
+created
+```
+
+- **URL:** `/location`
+- **Method:** `POST`
+- **Description:** Allows users to insert data.
+- **Request Body:**
 ```
 body request: {
     "uuid":"8254f02a-1c06-46f0-8382-66ad5be70cb6",
