@@ -10,10 +10,10 @@ Awair's data awareness, research, and analytics capabilities present a transform
 # Table of Content
 - [Description](#Description)
 - - [Endpoints](#endpoints)
-  - [Locate the IOT](#user-signup)
-  - [User Login](#user-login)
-  - [Create a Blog Post](#create-a-blog-post)
-  - [Like a Blog Post](#like-a-blog-post)
+  - [Input temperature data](#user-signup)
+  - [Input airqo data](#user-login)
+  - [Input wind data](#create-a-blog-post)
+  - [Input location data](#like-a-blog-post)
   - [Follow a user](#follow-a-user)
  
 # Application 
@@ -21,7 +21,7 @@ This is the guide to run this web application locally on the your device, it req
 
 ## Endpoints
 
-### Locate the IOT
+### Input temperature data
 
 - **URL:** `/temp`
 - **Method:** `POST`
@@ -39,10 +39,12 @@ body request: {
 - **Response:**
 
 ```json
+{
 created
+{
 ```
 
-### Locate the IOT
+### Input airqo data
 
 - **URL:** `/airqo`
 - **Method:** `POST`
@@ -63,6 +65,8 @@ body request: {
 created
 ```
 
+### Input wind data
+
 - **URL:** `/wind`
 - **Method:** `POST`
 - **Description:** Allows users to insert data.
@@ -80,6 +84,7 @@ body request: {
 ```json
 created
 ```
+### Input location data
 
 - **URL:** `/location`
 - **Method:** `POST`
