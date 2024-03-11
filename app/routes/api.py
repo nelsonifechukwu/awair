@@ -178,3 +178,44 @@ api.add_resource(WindData,"/wind")
 api.add_resource(RainData,"/rain")
 api.add_resource(LocationData,"/location")
 api.add_resource(AirQualityData, "/airqo")
+# RESOURCE FIELDS FOR GET REQUEST RETURN 
+# resource_fields = {
+#     "uuid":fields.String,
+#     "pressure":fields.String,
+#     "temperature":fields.String,
+#     "humidity":fields.String,
+#     "wind-speed":fields.String,
+#     "wind-direction":fields.String,
+#     "rain":fields.String,
+#     "pm2.5":fields.String,
+#     "pm10":fields.String,
+#     "co_index":fields.String,
+#     "cloud-cover":fields.String,
+#     "location":fields.String,
+# }
+# tempData_fields = {
+#     "uuid":fields.String,
+#     "pressure":fields.String,
+#     "temperature":fields.String,
+#     "humidity":fields.String,
+# }
+# windData_fields = {
+#     "uuid":fields.String,
+#     "wind-speed":fields.String,
+#     "wind-direction":fields.String,
+#     "cloud-cover":fields.String,
+# }
+# airq_fields = {
+#     "uuid":fields.String,
+#     "pm2.5":fields.String,
+#     "pm10":fields.String,
+#     "co_index":fields.String,
+# }
+# rain_fields = {
+#     "uuid":fields.String,
+#     "rain":fields.String,
+# }
+# location_fields = {
+#     "uuid":fields.String,
+#     "location":fields.String,
+# }

@@ -6,4 +6,3 @@ db = SQLAlchemy()
 api = Api()
 login_manager = LoginManager()
 migrate = Migrate()
-

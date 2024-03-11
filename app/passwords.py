@@ -22,3 +22,14 @@ class Password:
         password = encrypted.encode()
         decrypted_pass = Fernet(key).decrypt(password)
         return decrypted_pass.decode()
+
+# password = "Pass"
+# key, encrypted = Password().encrypt_password(password)
+# print(key)
+# print(encrypted)
+# decrypted = Password(key).decrypt_password(encrypted)
+# print(decrypted)
+
+
+
+

@@ -35,7 +35,12 @@ class Funcs:
         except TypeError as e:
             print(e)
             return 0
-
+    # @staticmethod
+    # def check_none(data):
+    #     if data:
+    #         return data
+    #     else:
+    #         return 0
     @staticmethod
     def files(filename):
         return '.' in filename and filename.rsplit('.', 1)[1].lower() in Config.EXTS

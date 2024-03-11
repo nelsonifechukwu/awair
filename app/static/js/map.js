@@ -37,6 +37,14 @@ var map = L.map("map", {
     position: "topleft",
   },
 }).setView([lat, long], 13);
+L.tileLayer(
+  "http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png",
+  {
+    maxZoom: 18,
+    attribution:
+      'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+  }
+).addTo(map);
 // DON'T FORGET TO ADD ICONS FOR THE VARIABLES.
 
 var customIcon = L.divIcon({
@@ -47,14 +55,7 @@ var customIcon = L.divIcon({
 });
 // L.marker([lat,long], {icon: customIcon}).bindPopup(L.popup({maxWidth:500}).setContent(popupItem)).addTo(map);
 
-L.tileLayer(
-  "http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web/default/WEBMERCATOR/{z}/{y}/{x}.png",
-  {
-    maxZoom: 18,
-    attribution:
-      'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
-  }
-).addTo(map);
+
 
 // for various markers
 var markers = {};
@@ -149,3 +150,39 @@ function getLocations() {
 }
 getLocations();
 
+var analytMap = L.map("analyt-map",
+{
+  scrollWheelZoom: false,
+  zoomControl: false,
+  doubleClickZoom:false,
+  keyboard:false,
+  touchZoom: false,
+  dragging:false
+}).setView([lat,long],13);
+
+var airqMap = L.map("airq-map",
+{
+  fullscreenControl: true,
+  fullscreenControlOptions: {
+    position: "topleft",
+  },
+}).setView([lat,long],19);
+L.tileLayer('http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/web_grau/default/WEBMERCATOR/{z}/{y}/{x}.png', {
+	maxZoom: 18,
+	attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>'
+}).addTo(analytMap);
+analytIcon = L.divIcon({
+  className: "custom-icon",
+  html: '<img draggable="false" src="/static/assets/good-feedback.png" alt="" width="30" />',
+  iconSize: [30, 30],
+  iconAnchor: [15, 10],
+});
+L.marker([lat, long], { icon: analytIcon }).addTo(analytMap)
+
+
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+	subdomains: 'abcd',
+	maxZoom: 20
+}).addTo(airqMap)

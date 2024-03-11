@@ -18,18 +18,11 @@
     <i class="fa-solid fa-angle-left" id="button-left"></i>
     <div class = "ana-scroll-modal"
       tabindex="0"
-
-      data-mdb-popover-init
-      data-toggle="popover"
-      data-mdb-trigger="focus"
-      title="Dismissible popover"
-      data-mdb-html="true"
-      data-mdb-placement="auto"
-      data-mdb-content="And here's some amazing content. It's very engaging. Right?"
-    >
+      id="popover">
+  
       <div class="ana-scroll-card bg-color">
         <div class="scroll-element">
-          <p>Now</p>
+          <p >Now</p>
           <p>
             <img
               draggable="false"
@@ -60,19 +53,13 @@
         {%endfor%}
       </div>
     </div>
+    <div id="popover-content" style="display: none;">
+      {%include 'scroll_card.html'%}
+    </div>
     <i class="fa-solid fa-angle-right" id="button-right"></i>
     <div class="ana-grid-1">
       <div
         class="bg-color"
-        tabindex="0"
-        data-mdb-popover-init
-        data-toggle="popover"
-        data-mdb-trigger="focus"
-        title="Dismissible popover"
-        data-mdb-html="true"
-        data-mdb-placement="auto"
-        data-mdb-container = "body"
-        data-mdb-content="<div>{% include 'scroll_card.html' %}</div>"
       >
         <div class="ana-forecast">
           Forecast {%for daily in daily_all%}
@@ -85,14 +72,7 @@
         </div>
       </div>
       <div class="ana-grid-1-mini">
-        <div class="bg-color" tabindex="0"
-
-        data-mdb-popover-init
-        data-toggle="popover"
-        data-mdb-trigger="focus"
-        title="Dismissible popover"
-        data-mdb-html="true"
-        data-mdb-content="And here's some amazing content. It's very engaging. Right?">
+        <div class="bg-color" >
           Air Quality
           <center>
             <img
@@ -107,23 +87,8 @@
             <p>{{airq.co_index}}</p>
           </center>
         </div>
-        <div class="bg-color" tabindex="0"
-
-        data-mdb-popover-init
-        data-toggle="popover"
-        data-mdb-trigger="focus"
-        title="Dismissible popover"
-        data-mdb-html="true"
-        data-mdb-content="And here's some amazing content. It's very engaging. Right?">Rain</div>
-        <div class="bg-color" tabindex="0"
-
-        data-mdb-popover-init
-        data-toggle="popover"
-        data-mdb-trigger="focus"
-        title="Dismissible popover"
-        data-mdb-html="true"
-        data-mdb-placement="top"
-        data-mdb-content="And here's some amazing content. It's very engaging. Right?">
+        <div class="bg-color" >Rain</div>
+        <div class="bg-color">
           Wind Speed and Direction
           <div>
             <p>Wind Speed: {{wind.wind_speed}}</p>
@@ -146,51 +111,20 @@
       <div class="map-cont" id="analyt-map"></div>
     </div>
     <div class="ana-grid-2">
-      <div class="bg-color" tabindex="0"
-
-      data-mdb-popover-init
-      data-toggle="popover"
-      data-mdb-trigger="focus"
-      title="Dismissible popover"
-      data-mdb-html="true"
-      data-mdb-content="And here's some amazing content. It's very engaging. Right?">
+      <div class="bg-color" >
         Humidity
         <div>
           <p>{{tph_data.humidity}}</p>
         </div>
       </div>
-      <div class="bg-color" tabindex="0"
-
-      data-mdb-popover-init
-      data-toggle="popover"
-      data-mdb-trigger="focus"
-      title="Dismissible popover"
-      data-mdb-html="true"
-      data-mdb-placement="top"
-      data-mdb-content="And here's some amazing content. It's very engaging. Right?">
+      <div class="bg-color" >
         Pressure
         <div>
           <p>{{tph_data.pressure}}</p>
         </div>
       </div>
-      <div class="bg-color" tabindex="0"
-
-      data-mdb-popover-init
-      data-toggle="popover"
-      data-mdb-trigger="focus"
-      title="Dismissible popover"
-      data-mdb-html="true"
-      data-mdb-placement="top"
-      data-mdb-content="And here's some amazing content. It's very engaging. Right?">Feels Like</div>
-      <div class="bg-color" tabindex="0"
-
-      data-mdb-popover-init
-      data-toggle="popover"
-      data-mdb-trigger="focus"
-      title="Dismissible popover"
-      data-mdb-placement="top"
-      data-mdb-html="true"
-      data-mdb-content="And here's some amazing content. It's very engaging. Right?">Averages</div>
+      <div class="bg-color" >Feels Like</div>
+      <div class="bg-color">Averages</div>
     </div>
   </div>
 </div>

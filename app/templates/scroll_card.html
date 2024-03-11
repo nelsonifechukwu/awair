@@ -1,0 +1,35 @@
+<div class='scroll-dates'>
+    <div class='row mt-n5 dates'>
+        {%for daily in daily_all%}
+        
+        <div class='col mt-n5 ms-3'>
+            <div class='row mb-0'>{{daily.date_forecast.strftime('%a')}}</div>
+            {%if loop.first%}
+            <div class='row mt-n5' id='circle'><span>{{daily.date_forecast.strftime('%d')}}</span></div>
+            {%else%}
+            <div class='row mt-n5' ><span>{{daily.date_forecast.strftime('%d')}}</span></div>
+            {%endif%}
+        </div>
+        
+        {%endfor%}
+    </div>
+    <span class='left'><i class='fas fa-angle-left'></i></span> <span class='right'><i class='fas fa-angle-right'></i></span>
+    <div class='row mt-n5 date'>{{tph_data.date_added.strftime('%A, %d %b %Y')}}</div>
+    
+    <div class='summary mt-n5'><h5 class='header mt-n5'> Chart </h5>
+            <canvas id="hourly-chart" class="mt-n5" ></canvas>
+            </div>
+    <div class='summary mt-n5'>
+        <h5 class='header'> Summary </h5>
+        <div class="card mt-n5">
+            Hello 
+        </div>
+    </div>
+    <div class='summary mt-n5'>
+        <h5 class='header'> Forecast </h5>
+        <div class="card mt-n5">
+            Hello
+        </div>
+    </div>
+
+</div>

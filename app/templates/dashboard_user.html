@@ -188,6 +188,7 @@ Dashboard
                 </div>
                 </div>
               </center>
+             
 
                 <center>
                   <div class="card h-auto w-75 pe-3 mb-3" >
@@ -354,6 +355,7 @@ Dashboard
     </div>
   </div>
 </div>
+<!-- Modals -->
 <!-- Edit Profile Modal -->
 <div class="modal fade" id="edit-profile" aria-hidden="true" aria-labelledby="device" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
@@ -416,6 +418,22 @@ Dashboard
     </div>
   </div>
 </div>
+<!-- Analyt Map -->
+<div class="modal fade" id="modal-map" aria-hidden="true" aria-labelledby="map-modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Air Quality Map</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+          <div id="airq-map"></div>
+          Add
+        </div>
+    </div>
+  </div>
+</div>
+
 
 {% set long = long  %}
 <script id="long" type="application/json">{{ long|tojson }}</script>
@@ -434,7 +452,14 @@ Dashboard
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment@^2"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@^1"></script>
+
+  <!-- MDB -->
+  <script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
+  ></script>
 <!-- Local -->
+<script type="text/javascript" src = "/static/js/hour.js"></script>
 <script
 type="text/javascript"
 src="/static/js/map.js"
@@ -451,5 +476,7 @@ src="/static/js/tph.js"
 type="text/javascript"
 src="/static/js/wind.js"
 ></script>
+<script type="text/javascript" src = "/static/js/analytics.js"></script>
+
 
 {%endblock%}
