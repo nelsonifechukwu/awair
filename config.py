@@ -5,10 +5,10 @@ from datetime import timedelta
 load_dotenv()
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    MONGO_HOST = os.environ.get('MONGO_HOST')
-    MONGO_PORT = os.environ.get('MONGO_PORT')
-    MONGO_DB =os.environ.get('MONGO_DB')
-    MONGO_COL =os.environ.get('MONGO_COL')
+    MONGO_HOST = "localhost"
+    MONGO_PORT = "22743"
+    MONGO_DB = "localhost:africo"
+    MONGO_COL = "localhost"
     # PERMANENT_SESSION_LIFETIME = timedelta(seconds=5)
     CLIENT_ID = os.environ.get("CLIENT_ID")
     CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
