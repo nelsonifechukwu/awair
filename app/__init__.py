@@ -22,4 +22,8 @@ def create_app(config_class = Config):
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(analytics_bp)
     app.jinja_env.globals.update(funcs=funcs)
+    app.jinja_env.lstrip_blocks = True
+    app.jinja_env.trim_blocks = True
+    app.run(host="0.0.0.0", port=80, debug=True, use_reloader=True)
+
     return app
