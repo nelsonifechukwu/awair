@@ -4,9 +4,6 @@ from datetime import timedelta
 
 load_dotenv()
 class Config:
-    POSTGRES_USER = os.environ.get('POSTGRES_USER')
-    POSTGRES_PASS = os.environ.get('POSTGRES_PASS')
-    POSTGRES_URL = os.environ.get('POSTGRES_URL')
     SECRET_KEY = os.environ.get('SECRET_KEY')
     MONGO_HOST = os.environ.get('MONGO_HOST')
     MONGO_PORT = os.environ.get('MONGO_PORT')
@@ -18,7 +15,8 @@ class Config:
     UPLOADS = "app/static/uploads/"
     EXTS = set(['png', 'jpg', 'jpeg'])
     # SQLALCHEMY_DATABASE_URI = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASS}@{POSTGRES_URL}"
-    SQLALCHEMY_DATABASE_URI = f"postgresql://awairdb_user:ijtmBBK6blj2uYWk8X0reivkvJqkLWjq@dpg-cnkugen79t8c73ebr1sg-a.oregon-postgres.render.com/awairdb"
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    # f"postgresql://awairdb_user:ijtmBBK6blj2uYWk8X0reivkvJqkLWjq@dpg-cnkugen79t8c73ebr1sg-a.oregon-postgres.render.com/awairdb"
     # SQLALCHEMY_DATABASE_URI ="sqlite:///test"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     GOOGLE_DISCOVERY_URL = (
