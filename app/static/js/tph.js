@@ -48,7 +48,7 @@ function graphTPH(temperature_data, humidity_data, pressure_data, labels, time='
   else if(time == '4'){
     tph.options.scales.x.time.unit = 'month';
   }
-  else if(time == '52'){
+  else{
     tph.options.scales.x.time.unit = 'year';
   }
   tph.data.labels = labels;

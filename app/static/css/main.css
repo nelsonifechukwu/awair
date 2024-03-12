@@ -411,6 +411,42 @@
 }
 /* End of sidebar and homesection styling*/
 
+/* List Table Styling */
+table {
+  width: 80%;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #7798b1;
+  color: #fff;
+}
+
+td {
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* End of List Table Styling */
+
+
 /* Account Profile styling */
 .main-pic {
   position: relative;
@@ -467,36 +503,6 @@ a:hover {
   width: 150px;
 }
 /* End of Account Profile styling */
-
-/* Device Card styling */
-.keep-margin {
-  position: relative;
-  margin: 50px;
-}
-
-.device-card-test {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  max-width: 700px;
-  border: 2px solid;
-  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-  background-color: transparent;
-  margin: auto;
-  /* margin-top: 50px;
-  margin-bottom: 50px; */
-  flex-wrap: wrap;
-  padding: 10px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.device-card-test .content {
-  /* border: 1px solid;  */
-  display: inline-block;
-}
-/* End of Device Card styling */
 
 /*Graph styling under details*/
 .wrapper-space {
@@ -568,14 +574,81 @@ a:hover {
 }
 /* End of map pop up styling under map.js*/
 
-/*Device state styling */
-.device-span {
+/* Device Card styling */
+.keep-margin {
+  position: relative;
+  margin: 50px;
+}
+
+.device-card-test {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  height: 300px;
+  /* border: 2px solid; */
+  box-shadow: 0px 0px 10px rgb(64, 63, 66, 0.3);
+  border-radius: 20px;
+  background-color: rgba(236, 239, 241, 0.764);
+  margin: auto;
+  /* margin-top: 50px;
+  margin-bottom: 50px; */
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.device-card-test .content {
+  /* border: 1px solid;  */
+  display: inline-block;
+}
+.device-number {
+  position: absolute;
+  border: 1px solid rgba(236, 239, 241, 0.764);
+  background-color: rgb(84, 110, 122, 0.8);
+  margin: 0px;
+  top: -11px;
+  left: -10px;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.device-span-1 {
   display: flex;
   flex-direction: row;
-  width: 80%;
-  height: 100%;
+  width: 100%;
   justify-content: space-between;
   cursor: pointer;
+}
+.device-span-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  cursor: pointer;
+  padding: 0px 0px;
+}
+
+.remove-device {
+  background-color: rgba(205, 69, 60, 0.925);
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(53, 87, 180, 0.3);
+  border: 1px solid;
+  padding: 2px;
+}
+.remove-device a:hover,
+.remove-device:hover {
+  text-decoration: none;
+  background-color: red;
+}
+
+.remove-device a {
+  text-decoration: none;
+  color: white;
 }
 
 .remove-button,
@@ -583,7 +656,7 @@ a:hover {
   width: 10px;
   padding-right: 40px;
   /* margin-left: 10%; */
-  font-size: 1px;
+  /* font-size: 1px; */
 }
 
 .remove-button p,
@@ -658,7 +731,7 @@ a:hover {
 .d-danger {
   animation: glow-danger 1500ms infinite;
 }
-/*End of device state styling */
+/* End of Device Card styling */
 
 /* Battery and Signal Hover styling */
 .bar-sig {
@@ -835,94 +908,93 @@ scroll-card & scroll-element */
 .popover-body {
   height: 70vh;
   overflow-y: auto;
-  white-space:pre-wrap;
+  white-space: pre-wrap;
 }
 /* .forecast-popover{
   width: 2000px;
 } */
-.scroll-pop{
+.scroll-pop {
   display: block;
 }
-.forecast-pop{
+.forecast-pop {
   display: none;
 }
-.popover{
-  max-width: 350px !important; 
+.popover {
+  max-width: 350px !important;
   /* background: #131313 !important; */
 }
-.scroll-dates{
+.scroll-dates {
   /* border-radius: 10px; */
   /* border: 2px solid black; */
   height: 80px;
   scroll-behavior: smooth;
   width: 320px;
 }
-.dates{
+.dates {
   /* border: 2px solid black; */
   height: 45px;
   border-bottom: 1px solid #aaa;
 }
-.date{
+.date {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.left{
+.left {
   display: inline-block;
 }
-.left{
+.left {
   float: left;
 }
-.right{
+.right {
   display: inline-block;
 }
-.right{
+.right {
   float: right;
 }
-.header{
+.header {
   font-size: 15px;
 }
-.summary{
+.summary {
   border-bottom: 1px solid #aaa;
   height: 220px;
 }
 /* .summary-card{
   height: 200px;
 } */
-#circle{
+#circle {
   background: lightblue;
   border-radius: 50%;
   width: 25px;
   height: 25px;
   transform: translateX(14%);
 }
-.row span{
+.row span {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
-.row span:hover{
+.row span:hover {
   background: rgb(129, 188, 188);
   border-radius: 50%;
   width: 25px;
   height: 25px;
 }
-.col div{
+.col div {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.mb-0{
+.mb-0 {
   transform: translateX(-10%);
 }
-.chart{
+.chart {
   height: 100px;
   width: 300px;
 }
 
-
-@media (max-width: 700px){
+@media (max-width: 700px) {
   .popover {
     width: 450px !important;
     position: fixed !important;
@@ -1040,8 +1112,9 @@ scroll-card & scroll-element */
   }
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .content {
     font-size: 11px;
   }
-}
+} */
+

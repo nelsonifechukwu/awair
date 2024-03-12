@@ -7,7 +7,7 @@
             {%if loop.first%}
             <div class='row mt-n5' id='circle'><span>{{daily.date_forecast.strftime('%d')}}</span></div>
             {%else%}
-            <div class='row mt-n5' ><span>{{daily.date_forecast.strftime('%d')}}</span></div>
+            <div class='row mt-n5' id='{{loop.index}}' onclick="getChart(this.id)" ><span>{{daily.date_forecast.strftime('%d')}}</span></div>
             {%endif%}
         </div>
         
