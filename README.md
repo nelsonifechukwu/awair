@@ -1,6 +1,5 @@
 # AWAIR
 
-# Description
 In Africa, the absence of an extensive meteorological device network has posed a significant challenge for environmental research, hindering accurate ground-truth data acquisition. This limitation affects various sectors, including government initiatives, urban planning, pollution control, etc.
 
 Recognizing this gap, Awair emerges as a groundbreaking solution, offering an advanced, cloud-connected, real-time platform for environmental data. Awair aims to empower top universities, research labs, government agencies, and African industrial applications by providing accurate meteorological insights, facilitating informed decision-making, and sustainable solutions for environmental challenges.
@@ -16,10 +15,13 @@ Awair's data awareness, research, and analytics capabilities present a transform
   - [Input location data](#like-a-blog-post)
   - [Follow a user](#follow-a-user)
  
-# Application 
-This is the guide to run this web application locally on the your device, it requires the installation of python, flask and other tools as seen in the requirement.txt in this repository.
+# Testing 
+- Register at [Awair](https://awair.onrender.com/)
+- Create a Device using this ID: ``` ```
 
-## Endpoints
+
+## Sending Data
+The following endpoints should be used by your hardware to interact with the platform: 
 
 ### Input temperature data
 
@@ -39,9 +41,7 @@ body request: {
 - **Response:**
 
 ```json
-{
 created
-{
 ```
 
 ### Input airqo data
@@ -97,6 +97,12 @@ body request: {
     "battery":"50",
     "signal": "80"
 }
+```
+
+- **Response:**
+
+```json
+created
 ```
 
 # Hardware Design
