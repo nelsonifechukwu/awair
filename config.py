@@ -22,7 +22,6 @@ class Config:
     GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
-    MONGO_DATABASE_URL = f"mongodb://{MONGO_HOST}:{MONGO_PORT}/"
 
 # print(Config.MONGO_DATABASE_URL)
 class TestConfig:
