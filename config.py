@@ -8,10 +8,7 @@ class Config:
     POSTGRES_PASS = os.environ.get('POSTGRES_PASS')
     POSTGRES_URL = os.environ.get('POSTGRES_URL')
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    MONGO_HOST = os.environ.get('MONGO_HOST')
-    MONGO_PORT = os.environ.get('MONGO_PORT')
-    MONGO_DB =os.environ.get('MONGO_DB')
-    MONGO_COL =os.environ.get('MONGO_COL')
+
     # PERMANENT_SESSION_LIFETIME = timedelta(seconds=5)
     CLIENT_ID = os.environ.get("CLIENT_ID")
     CLIENT_SECRET = os.environ.get("CLIENT_SECRET")
