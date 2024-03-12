@@ -20,7 +20,7 @@ Awair's data awareness, research, and analytics capabilities present a transform
 # Testing 
 - Register at [Awair](https://awair.onrender.com/)
 - Create a Device using any of these ID:
-# <img width="397" alt="Screenshot 2024-03-12 at 12 20 52" src="https://github.com/nelsonifechukwu/awair/assets/44223263/736d6651-d452-4ca9-a910-d51316c027ef"> 
+<br><img width="397" alt="Screenshot 2024-03-12 at 12 20 52" src="https://github.com/nelsonifechukwu/awair/assets/44223263/736d6651-d452-4ca9-a910-d51316c027ef"> 
 - Start [sending](#sending-data)  
 - Go to the analytics section to view forecast and visualize your data
 
