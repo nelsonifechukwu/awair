@@ -7,20 +7,22 @@ Recognizing this gap, Awair emerges as a groundbreaking solution, offering an ad
 Awair's data awareness, research, and analytics capabilities present a transformative approach to addressing the pressing issues related to the environment in the African context.
 
 # Table of Content
-- [Description](#Description)
-- - [Endpoints](#endpoints)
-  - [Input temperature data](#user-signup)
-  - [Input airqo data](#user-login)
-  - [Input wind data](#create-a-blog-post)
-  - [Input location data](#like-a-blog-post)
-  - [Follow a user](#follow-a-user)
+- [Testing](#Testing)
+  - [Endpoints](#endpoints)
+  - [Input temperature data](#input-temperature-data)
+  - [Input airqo data](#input-airqo-data)
+  - [Input wind data](#input-wind-data)
+  - [Input location data](#input-location-data)
+- [Hardware Design](#hardware-design)
+  - [Electrical CAD](#electrical-cad)
+  - [Mechanical CAD](#mechanical-cad)
+  - [Embedded Software](#embedded-software)
  
 # Testing 
 - Register at [Awair](https://awair.onrender.com/)
 - Create a Device using any of these ID:
--   <img width="397" alt="Screenshot 2024-03-12 at 12 20 52" src="https://github.com/nelsonifechukwu/awair/assets/44223263/736d6651-d452-4ca9-a910-d51316c027ef">
-
-
+<img width="397" alt="Screenshot 2024-03-12 at 12 20 52" src="https://github.com/nelsonifechukwu/awair/assets/44223263/736d6651-d452-4ca9-a910-d51316c027ef">
+- Start sending and visualizing your data
 
 ## Sending Data
 The following endpoints should be used by your hardware to interact with the platform: 
