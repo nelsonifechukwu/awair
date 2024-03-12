@@ -15,7 +15,7 @@ from .models.forecast import Hourly, Daily
 # To store data
 
 class OpenMeteoStore:
-    def __init__(self,lat,lon, device_id, url = "https://api.open-meteo.com/v1/forecast", client = pymongo.MongoClient(Config.MONGO_DATABASE_URL)[Config.MONGO_DB][Config.MONGO_COL]):
+    def __init__(self,lat,lon, device_id, url = "https://api.open-meteo.com/v1/forecast"):
         self._lat = lat
         self._lon = lon
         self._device = device_id
@@ -42,14 +42,7 @@ class OpenMeteoStore:
         return {"_id": self._device, 
                 "class": dump, 
                 "date": datetime.now()}
-    # Mongo's idea is proving difficult to use So might use relational db for now to accomplish my goal (I could opt for a better architecture which is what I'll most likely do as well)
-    def store_data(self):
-        response = self._api_req()
-        response_dump = pickle.dumps(response)
-        response_dict = self.convert_to_dict(response_dump)
-        self._client.update_one({'_id':self._device},{'$set':response_dict},upsert=True)
-        return "Updated"
-    
+
    
     def store_data_rel(self): 
         response = self._api_req()
