@@ -8,7 +8,7 @@ Awair's data awareness, research, and analytics capabilities present a transform
 
 # Table of Content
 - [Testing](#Testing)
-  - [Input temperature data](#input-temperature-data)
+  - [Input temperature data](#input-tph-data)
   - [Input airqo data](#input-airqo-data)
   - [Input wind data](#input-wind-data)
   - [Input location data](#input-location-data)
@@ -20,14 +20,14 @@ Awair's data awareness, research, and analytics capabilities present a transform
 # Testing 
 - Register at [Awair](https://awair.onrender.com/)
 - Create a Device using any of these ID:
-  <img width="397" alt="Screenshot 2024-03-12 at 12 20 52" src="https://github.com/nelsonifechukwu/awair/assets/44223263/736d6651-d452-4ca9-a910-d51316c027ef">
-  
-- Start [sending](#sending-data) and visualizing your data
+  <img width="397" alt="Screenshot 2024-03-12 at 12 20 52" src="https://github.com/nelsonifechukwu/awair/assets/44223263/736d6651-d452-4ca9-a910-d51316c027ef"> </br>
+- Start [sending](#sending-data)  
+- Go to the analytics section to view forecast and visualize your data
 
 <h3> Sending Data </h3>
-The following endpoints should be used by your hardware to interact with the platform: 
+Your hardware should use the following endpoints to interact with the platform: 
 
-### Input temperature data
+### Input tph data
 
 - **URL:** `/temp`
 - **Method:** `POST`
