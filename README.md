@@ -6,6 +6,9 @@ Recognizing this gap, Awair emerges as a groundbreaking solution, offering an ad
 
 Awair's data awareness, research, and analytics capabilities present a transformative approach to addressing the pressing issues related to the environment in the African context.
 
+![Screenshot 2024-03-12 at 12 52 43](https://github.com/nelsonifechukwu/awair/assets/44223263/7242a7a4-d5e5-47b3-b3b1-7bc1c783e495)
+
+
 # Table of Content
 - [Testing](#Testing)
   - [Input temperature data](#input-tph-data)
