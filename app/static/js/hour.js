@@ -1,18 +1,9 @@
-  const myPopoverTrigger = document.getElementById('popover');
-  function getChart(ident){
-    $.ajax({
-      url: '/analytics/' + id + '/' + deviceId + '/hourly?'+ident,
-      method: 'GET',
-      dataType: 'json',
-      success: function(data){
-        console.log(data);
-      },
-      error: function(error){
-  console.error('Error getting data: ', error);
-      }
-    });
-  }
-  let hourChart = null;
+var hourChart = null;
+const myPopoverTrigger = document.getElementById('popover');
+var num = JSON.parse(document.getElementById("num").textContent);
+// console.log(num);
+var counter = 1;
+
   const sourceCanvasId = 'hourly-chart';
   let newCanvasId = sourceCanvasId;
   let suffix = 0;
@@ -34,7 +25,8 @@
  
   myPopoverTrigger.addEventListener('shown.mdb.popover', () => {
     
-    close = document.getElementById("pop-close");
+  
+    let close = document.getElementById("pop-close");
     close.addEventListener("click", () => {
         // console.log("Yeah");
         instance.hide();
@@ -114,17 +106,23 @@
           
           hourChart.data.labels = data.date ;
           hourChart.data.datasets[0] = ForecastHour;
+          if(counter==1){
           hourChart.options.plugins.annotation.annotations.line1.xMin = data.date[0];
           hourChart.options.plugins.annotation.annotations.line1.xMax = data.now;
+        }
+        else{
+          hourChart.options.plugins.annotation.annotations.line1.display = false;
+        }
           hourChart.update(); 
           
         }
         
         }
         
+        
         function getNowChart(){
           $.ajax({
-            url: '/analytics/' + id + '/' + deviceId + '/hourly?1',
+            url: '/analytics/' + id + '/' + deviceId + '/hourly?'+counter,
             method: 'GET',
             dataType: 'json',
             success: function(data){
@@ -136,7 +134,6 @@
           });
         }
         getNowChart();
-        
   });
   myPopoverTrigger.addEventListener('hide.mdb.popover', () => {
       if (hourChart) {
@@ -144,9 +141,45 @@
       }
 
   });
+ 
+function getChart(ident){
+    $.ajax({
+      url: '/analytics/' + id + '/' + deviceId + '/hourly?'+ident,
+      method: 'GET',
+      dataType: 'json',
+      success: function(data){
+        dataChange(data, ident);
+      },
+      error: function(error){
+  console.error('Error getting data: ', error);
+      }
+    });
+  }
+function dataChange(data, ident){
+  const ddate = document.getElementById('ddate');
+        ddate.innerText = data.strdate;
+        counter= ident;
+        instance.show();
+}
+// Write a better counter function !!!!!!!!!!!!!!!!
+function getNext(d){
+  if(d=='n'){
+    if(counter<num){
+      counter+=1; }
+    
+  }
+  else{
+    if(counter>1){
+    counter-=1;}
+    else{
+      counter=1;
+    }
+  }
+  // console.log(counter);
 
-
-  
+    getChart(counter);
+}
+  // console.log(hourChart);
 
 
 // var url = '/analytics/' + id + '/' + deviceId + '/hourly';

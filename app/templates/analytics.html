@@ -61,9 +61,15 @@
       <div
         class="bg-color"
       >
-        <div class="ana-forecast">
-          Forecast {%for daily in daily_all%}
+        <div class="ana-forecast" id="popover2">
+          <div class="ana-title"> <i class="fas fa-clock"></i> &nbsp;FORECAST  </div>
+          {%for daily in daily_all%}
           <p>
+            {%if loop.first %}
+            Today
+            {%else%}
+            {{daily.date_forecast.strftime('%a')}}
+            {%endif%}
             Min: {{funcs.convert_float(daily.temperature_2m_min)|round|int}},
             Max:{{funcs.convert_float(daily.temperature_2m_max)|round|int}}
           </p>
@@ -71,9 +77,12 @@
           {%endfor%}
         </div>
       </div>
+      <div id="popover-content2" style="display: none;">
+        {%include 'daily_forecast.html'%}
+      </div>
       <div class="ana-grid-1-mini">
         <div class="bg-color" >
-          Air Quality
+         <div class="ana-title"> <i class="fas fa-lungs"></i> &nbsp; AIR QUALITY </div>
           <center>
             <img
               draggable="false"
@@ -87,15 +96,21 @@
             <p>{{airq.co_index}}</p>
           </center>
         </div>
-        <div class="bg-color" >Rain</div>
-        <div class="bg-color">
-          Wind Speed and Direction
+        <div class="bg-color" id="rain-popper"><div class="ana-title"><i class="fas fa-droplet"></i> &nbsp; RAIN </div></div>
+        <div id="rain-content" style="display: none;">
+          {%include 'rain_analytics.html'%}
+        </div>
+        <div class="bg-color" id="wind-popper">
+          <div class="ana-title"> <i class="fas fa-wind"></i> &nbsp; WIND </div>
           <div>
             <p>Wind Speed: {{wind.wind_speed}}</p>
           </div>
           <div>
             <p>Wind Direction: {{wind.wind_direction}}</p>
           </div>
+        </div>
+        <div id="wind-content" style="display: none;">
+          {%include 'wind_analytics.html'%}
         </div>
       </div>
     </div>
@@ -107,24 +122,34 @@
       data-mdb-modal-init
       data-mdb-target="#modal-map"
     >
-      <div class="map-title">Map</div>
+      <div class="map-title ana-title"><i class="fas fa-map"></i> &nbsp; MAP  </div>
       <div class="map-cont" id="analyt-map"></div>
     </div>
     <div class="ana-grid-2">
-      <div class="bg-color" >
-        Humidity
+      <div class="bg-color" id="hum-popper">
+        <div class="ana-title">
+        HUMIDITY</div>
         <div>
           <p>{{tph_data.humidity}}</p>
         </div>
       </div>
-      <div class="bg-color" >
-        Pressure
+      <div id="hum-content" style="display: none;">
+        {%include 'hum_analytics.html'%}
+      </div>
+      <div class="bg-color" id="pressure-popper" >
+        <div class="ana-title"> PRESSURE </div>
         <div>
           <p>{{tph_data.pressure}}</p>
         </div>
       </div>
-      <div class="bg-color" >Feels Like</div>
-      <div class="bg-color">Averages</div>
+      <div id="pressure-content" style="display: none;">
+        {%include 'press_analytics.html'%}
+      </div>
+      <div class="bg-color" id="feel-popper" ><div class="ana-title"> FEELS LIKE</div></div>
+      <div id="feel-content" style="display: none;">
+        {%include 'feel_analytics.html'%}
+      </div>
+      <div class="bg-color"><div class="ana-title"> <i class="fas fa-calculator"></i>&nbsp; AVERAGES </div></div>
     </div>
   </div>
 </div>

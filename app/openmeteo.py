@@ -1,11 +1,7 @@
 import openmeteo_requests
-import json
-import pickle
-
 import requests_cache
 import pandas as pd
 from retry_requests import retry
-import pymongo
 from config import Config
 from datetime import datetime, timedelta
 import pandas as pd
@@ -19,8 +15,7 @@ class OpenMeteoStore:
         self._lat = lat
         self._lon = lon
         self._device = device_id
-        self._url = url
-        self._client = client  
+        self._url = url 
         self._params = self._create_param()
     def _create_param(self):
         return {
@@ -42,7 +37,6 @@ class OpenMeteoStore:
         return {"_id": self._device, 
                 "class": dump, 
                 "date": datetime.now()}
-
    
     def store_data_rel(self): 
         response = self._api_req()

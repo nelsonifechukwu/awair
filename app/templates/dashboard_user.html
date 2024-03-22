@@ -660,6 +660,9 @@
 <script id="dev" type="application/json">
   {{ dev|tojson }}
 </script>
+<script id="num" type="application/json">
+  {{ num_of_data|tojson }}
+</script>
 
 <!-- Leaflet -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -672,18 +675,26 @@
 https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js
 "></script>
 
+<!-- Production -->
+<!-- <script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script> -->
 <!-- MDB -->
 <script
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"
 ></script>
+
+
 <!-- Local -->
 
 <script type="text/javascript" src="/static/js/map.js"></script>
-<script type="text/javascript" src="/static/js/hour.js"></script>
+
+<script type="text/javascript" src="/static/js/daily.js"></script>
+
 <script type="text/javascript" src="/static/js/air.js"></script>
 <script type="text/javascript" src="/static/js/tph.js"></script>
 <script type="text/javascript" src="/static/js/wind.js"></script>
+<script type="text/javascript" src="/static/js/initchart.js"></script>
 <script type="text/javascript" src="/static/js/analytics.js"></script>
 
 {%endblock%}

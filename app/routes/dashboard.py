@@ -196,12 +196,17 @@ def dashboard_user(id, device):
             if darla:
                 device_all = Uuid.query.filter_by(user_id =id).join(Darla, Uuid.uuid == Darla.id).add_columns(Darla.device_id, Uuid.date_added, Darla.active, Darla.last_updated, Darla.place, Darla.battery, Darla.signal).all()
                 no_of_device =len(device_all)
-                hourly_all = Hourly.query.filter(and_(Hourly.date_forecast> datetime.now(), Hourly.date_forecast <= datetime.now()+timedelta(hours=24))).all()
+                hourly_all = Hourly.query.filter_by(darla_id = darla.id).filter(and_(Hourly.date_forecast> datetime.now(), Hourly.date_forecast <= datetime.now()+timedelta(hours=24))).all()
                 # print(len(hourly_all))
+                if hourly_all:
+                    hourly_date = hourly_all[0]
+                else:
+                    hourly_date = None
                 data = Data.query.order_by(desc(Data.date_added)).filter_by(darla_id = darla.id).first()
                 air = AirQuality.query.order_by(desc(AirQuality.date_added)).filter_by(darla_id = darla.id).first()
                 wind = Wind.query.order_by(desc(Wind.date_added)).filter_by(darla_id = darla.id).first()
-                daily_all = Daily.query.filter(and_(Daily.date_forecast> datetime.now(), Daily.date_forecast <= datetime.now()+timedelta(days=7))).all()
+                daily_all = Daily.query.filter_by(darla_id = darla.id).filter(and_(Daily.date_forecast>= datetime.now(), Daily.date_forecast <= datetime.now()+timedelta(days=7))).all()
+                num_of_data = len(daily_all)
                 location = darla.location
                 lat = 0
                 long =0
@@ -216,7 +221,7 @@ def dashboard_user(id, device):
                 is_device = Uuid.query.filter_by(user_id =id).first()
                 if is_device:
                     # print(darla.active)
-                    return render_template("dashboard_user.html", user=user, device = device_all, darla=darla, location=location, hourly_all=hourly_all, daily_all=daily_all, tph_data=data, airq=air, lat = lat, long=long, dev=device, wind=wind, precipitation=0, no_of_device = no_of_device)
+                    return render_template("dashboard_user.html", user=user, device = device_all, darla=darla, location=location, hourly_all=hourly_all, daily_all=daily_all, tph_data=data, airq=air, lat = lat, long=long, dev=device, wind=wind, precipitation=0, no_of_device = no_of_device, hourly_date=hourly_date, num_of_data=num_of_data)
                 else:
                     return redirect(f"/dashboard/{user.id}")
             else:

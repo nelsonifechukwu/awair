@@ -5,16 +5,16 @@
         <div class='col mt-n5 ms-3'>
             <div class='row mb-0'>{{daily.date_forecast.strftime('%a')}}</div>
             {%if loop.first%}
-            <div class='row mt-n5' id='{{loop.index}}' onclick="getChart(this.id,'ddate')"><span class="today-day circle">{{daily.date_forecast.strftime('%d')}}</span></div>
+            <div class='row mt-n5' id='{{loop.index}}_day'><span class="today-day">{{daily.date_forecast.strftime('%d')}}</span></div>
             {%else%}
-            <div class='row mt-n5' id='{{loop.index}}' onclick="getChart(this.id,'ddate')" ><span>{{daily.date_forecast.strftime('%d')}}</span></div>
+            <div class='row mt-n5' id='{{loop.index}}_day' ><span>{{daily.date_forecast.strftime('%d')}}</span></div>
             {%endif%}
         </div>
         
         {%endfor%}
     </div>
     {%if hourly_date.date_forecast%}
-    <button class='left btn btn-outline-primary btn-floating' onclick="getNext('b','ddate')"><i class='fas fa-angle-left'></i></button> <button class='right  btn btn-outline-primary btn-floating'onclick="getNext('n','ddate')"><i class='fas fa-angle-right'></i></button>
+    <button class='left btn btn-outline-primary btn-floating' ><i class='fas fa-angle-left'></i></button> <button class='right  btn btn-outline-primary btn-floating'><i class='fas fa-angle-right'></i></button>
     
     <div class='row mt-n5 date' id="ddate">{{hourly_date.date_forecast.strftime('%A, %d %b %Y')}}</div>
     {%else%}
@@ -24,7 +24,7 @@
         {{tph_data.temperature}}&deg;C
     </span> -->
     <div class='summary mt-n5'><h5 class='header mt-n5'> Chart </h5>
-            <canvas id="hourly-chart" class="mt-n5" ></canvas>
+            <!-- <canvas id="hourly-chart" class="mt-n5" ></canvas> -->
             </div>
     <div class='summary mt-n5'>
         <h5 class='header'> Summary </h5>
